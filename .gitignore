@@ -1,0 +1,11 @@
+# ignore debug files
+/AADS/bin/Debug/*
+/AADS/bin/Release/*
+/AADS/obj/Debug/*
+/AADS/obj/Release/*
+# ignore visual studio caches
+/.vs/
+# except important files
+!/AADS/bin/Debug/NETGeographic_d.dll
+# except config files
+!/AADS/bin/Debug/Maps.json
