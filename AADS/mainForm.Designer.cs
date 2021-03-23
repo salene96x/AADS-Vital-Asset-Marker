@@ -50,6 +50,7 @@ namespace AADS
             this.label22 = new System.Windows.Forms.Label();
             this.datePanel = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.button7 = new System.Windows.Forms.Button();
             this.time_label = new System.Windows.Forms.Label();
             this.dateLabel = new System.Windows.Forms.Label();
             this.labelmode = new System.Windows.Forms.Label();
@@ -119,9 +120,9 @@ namespace AADS
             this.panelRightShow = new System.Windows.Forms.Panel();
             this.panelRightUnit = new System.Windows.Forms.Panel();
             this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
+            this.button9 = new System.Windows.Forms.Button();
             this.panelRightMap = new System.Windows.Forms.Panel();
             this.btnTrack = new System.Windows.Forms.Button();
             this.btnShow_Marker = new System.Windows.Forms.Button();
@@ -388,6 +389,7 @@ namespace AADS
             // 
             // panel8
             // 
+            this.panel8.Controls.Add(this.button7);
             this.panel8.Controls.Add(this.time_label);
             this.panel8.Controls.Add(this.dateLabel);
             this.panel8.Controls.Add(this.labelmode);
@@ -398,6 +400,16 @@ namespace AADS
             this.panel8.Padding = new System.Windows.Forms.Padding(11, 0, 11, 0);
             this.panel8.Size = new System.Drawing.Size(240, 60);
             this.panel8.TabIndex = 8;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(6, 22);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 23);
+            this.button7.TabIndex = 8;
+            this.button7.Text = "button7";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // time_label
             // 
@@ -1395,16 +1407,6 @@ namespace AADS
             this.button8.Text = "Track";
             this.button8.UseVisualStyleBackColor = true;
             // 
-            // button9
-            // 
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Location = new System.Drawing.Point(0, 0);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(73, 55);
-            this.button9.TabIndex = 0;
-            this.button9.Text = "unit1";
-            this.button9.UseVisualStyleBackColor = true;
-            // 
             // button10
             // 
             this.button10.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -1424,6 +1426,16 @@ namespace AADS
             this.button11.TabIndex = 2;
             this.button11.Text = "Polygon";
             this.button11.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button9.Location = new System.Drawing.Point(0, 0);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(73, 55);
+            this.button9.TabIndex = 0;
+            this.button9.Text = "unit1";
+            this.button9.UseVisualStyleBackColor = true;
             // 
             // panelRightMap
             // 
@@ -1728,6 +1740,7 @@ namespace AADS
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;
         public GMap.NET.WindowsForms.GMapControl mainMap;
+        private System.Windows.Forms.Button button7;
     }
 }
 

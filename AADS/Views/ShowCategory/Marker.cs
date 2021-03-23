@@ -12,7 +12,7 @@ namespace AADS.Views.ShowCategory
 {
     public partial class Marker : UserControl
     {
-        public bool vitClick = true;
+        public bool vitClick;
         public Marker()
         {
             InitializeComponent();

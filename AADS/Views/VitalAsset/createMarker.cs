@@ -24,6 +24,7 @@ namespace AADS.Views.VitalAsset
             var point = mainForm.mainMap.FromLocalToLatLng(mouseX, mouseY);
             GMapOverlay markersOvl = new GMapOverlay("markers");
             GMarkerGoogle marker = new GMarkerGoogle(point, GMarkerGoogleType.red);
+            
             markersOvl.Markers.Add(marker);
             mainForm.mainMap.Overlays.Add(markersOvl);
             var main = new Views.VitalAsset.main();
@@ -34,8 +35,8 @@ namespace AADS.Views.VitalAsset
         void updateMap()
         {
             var mainForm = new AADS.mainForm();
-            mainForm.mainMap.Zoom -= 0.0000000000000000000000000001;
-            mainForm.mainMap.Zoom += 0.0000000000000000000000000001;
+            mainForm.mainMap.Zoom -= 0.1;
+            mainForm.mainMap.Zoom += 0.1;
         }
     }
 }

@@ -685,16 +685,29 @@ namespace AADS
         private void mainMap_Click(object sender, EventArgs e)
         {
         }
-
+        public bool check;
         private void mainMap_MouseClick_1(object sender, MouseEventArgs e)
         {
-            var marker = new Views.ShowCategory.Marker();
-            if (marker.vitClick)
+            if (check)
             {
-                var createMarker = new Views.VitalAsset.createMarker(e.X, e.Y);
-                createMarker.singleMark();
+                var point = mainMap.FromLocalToLatLng(e.X, e.Y);
+                GMapOverlay markerOvl = new GMapOverlay("vitMarker");
+                GMarkerGoogle vitMarker = new GMarkerGoogle(point, GMarkerGoogleType.orange_small);
+                markerOvl.Markers.Add(vitMarker);
+                mainMap.Overlays.Add(markerOvl);
+                updateMap();
             }
 
+        }
+        void updateMap()
+        {
+            mainMap.Zoom += 0.1;
+            mainMap.Zoom -= 0.1;
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            check = true;
         }
     }
 }
