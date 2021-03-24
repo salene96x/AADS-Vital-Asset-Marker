@@ -9,8 +9,9 @@ using System.Windows.Forms;
 
 namespace AADS.Views.VitalAsset
 {
-    class createMarker
+    public class createMarker
     {
+        private mainForm main;
         private int mouseX;
         private int mouseY;
         public createMarker(int x, int y)
@@ -18,18 +19,22 @@ namespace AADS.Views.VitalAsset
             mouseX = x;
             mouseY = y;
     }
-        public void singleMark()
+        public void singleMark(int x, int y)
         {
-            var mainForm = new AADS.mainForm();
-            var point = mainForm.mainMap.FromLocalToLatLng(mouseX, mouseY);
+            main = new mainForm();
+            var point = main.mainMap.FromLocalToLatLng(mouseX, mouseY);
             GMapOverlay markersOvl = new GMapOverlay("markers");
             GMarkerGoogle marker = new GMarkerGoogle(point, GMarkerGoogleType.red);
             
             markersOvl.Markers.Add(marker);
-            mainForm.mainMap.Overlays.Add(markersOvl);
-            //var main = new Views.VitalAsset.main();
-            //main.txtPointLat.Text = point.Lat.ToString();
-            //main.txtPointLng.Text = point.Lng.ToString();
+            main.mainMap.Overlays.Add(markersOvl);
+
+            //using (Views.VitalAsset.main main = new main())
+            //{
+            //    main mainVital = new main();
+            //    mainVital.txtPointLat.Text = point.Lat.ToString();
+            //    mainVital.txtPointLng.Text = point.Lng.ToString();
+            //}
             updateMap();
         }
         void updateMap()

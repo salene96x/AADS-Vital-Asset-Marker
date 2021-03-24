@@ -1,5 +1,4 @@
-﻿using GMap.NET;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,10 +13,11 @@ namespace AADS.Views.ShowCategory
     public partial class Marker : UserControl
     {
         public bool vitClick;
+        private mainForm main;
         public Marker()
         {
             InitializeComponent();
-            
+            main = new mainForm();
         }
 
         private void btnShowAiport_Click(object sender, EventArgs e)
@@ -52,14 +52,16 @@ namespace AADS.Views.ShowCategory
             panelShowDetail.Controls.Clear();
             panelShowDetail.Controls.Add(Landmarkpage);
         }
-
+        public bool click;
+        public event ButtonClick OnButtonClick;
         private void btnShowVitalAsset_Click(object sender, EventArgs e)
         {
-            var VitalAssetpage = new Views.VitalAsset.main(new PointLatLng(0, 0));
+            var VitalAssetpage = new Views.VitalAsset.main();
             panelShowDetail.Controls.Clear();
             panelShowDetail.Controls.Add(VitalAssetpage);
             mainForm main = new mainForm();
-            main.setCheck(true);
+            main.setVitClickedValue(true);
+
         }
 
         private void btnShowWeaponBattery_Click(object sender, EventArgs e)
@@ -68,5 +70,10 @@ namespace AADS.Views.ShowCategory
             panelShowDetail.Controls.Clear();
             panelShowDetail.Controls.Add(WeaponsBatterypage);
         }
+    }
+    public delegate void ButtonClick(UserControl control, ClickEventArgs e);
+    public class ClickEventArgs : EventArgs
+    {
+        public bool clicked { get; set; }
     }
 }

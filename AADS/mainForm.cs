@@ -50,6 +50,7 @@ namespace AADS
 
         MarkerAndPolygon markerAndPolygon;
         public RadarOverlay radarP;
+        public bool vitSelectedCheck;
         public GMapOverlay GetOverlay(string Name)
         {
             return mainMap.Overlays.FirstOrDefault(x => x.Id == Name);
@@ -510,6 +511,7 @@ namespace AADS
             label27Location = new Point(this.Width - label27.Width, label27.Location.Y);
 
 
+
         }
         private void closeBox_Click(object sender, EventArgs e)
         {
@@ -686,30 +688,29 @@ namespace AADS
         }
         private void mainMap_MouseClick_1(object sender, MouseEventArgs e)
         {
-            if (check)
+            MessageBox.Show(this.check.ToString());
+            if (this.check) 
             {
                 createMarker(e.X, e.Y);
-                currentMarker.IsVisible = false;
-                check = false;
+                updateMap();
             }
+
+
+
         }
-        public static bool check;
-        public void setCheck(bool value)
+        private bool check = false;
+        public void setVitClickedValue(bool check)
         {
-            check = value;
+            this.check = check;
+            MessageBox.Show(this.check.ToString());
         }
-        void createMarker(int x, int y)
+        void createMarker(int mouseX, int mouseY)
         {
-            var point = mainMap.FromLocalToLatLng(x, y);
-            GMapOverlay markerOvl = new GMapOverlay("vitMarker");
-            GMarkerGoogle vitMarker = new GMarkerGoogle(point, GMarkerGoogleType.yellow_pushpin);
-            markerOvl.Markers.Add(vitMarker);
-            mainMap.Overlays.Add(markerOvl);
-            vitMarker.IsHitTestVisible = true;
-            var vitalMain = new Views.VitalAsset.main(point);
-            vitalMain.setString();
-            panelRightShow.Controls.Clear();
-            panelRightShow.Controls.Add(vitalMain);
+            var point = mainMap.FromLocalToLatLng(mouseX, mouseY);
+            GMapOverlay markersOvl = new GMapOverlay("markers");
+            GMarkerGoogle marker = new GMarkerGoogle(point, GMarkerGoogleType.yellow_pushpin);
+            markersOvl.Markers.Add(marker);
+            mainMap.Overlays.Add(markersOvl);
             updateMap();
         }
         void updateMap()
@@ -717,10 +718,13 @@ namespace AADS
             mainMap.Zoom += 0.1;
             mainMap.Zoom -= 0.1;
         }
-
+        public bool test;
         private void button7_Click(object sender, EventArgs e)
         {
-            check = true;
+            //vitSelectedCheck = true;
+            
         }
+        private bool test2;
+
     }
 }
