@@ -50,6 +50,7 @@ namespace AADS
 
         MarkerAndPolygon markerAndPolygon;
         public RadarOverlay radarP;
+        public bool vitSelectedCheck;
         public GMapOverlay GetOverlay(string Name)
         {
             return mainMap.Overlays.FirstOrDefault(x => x.Id == Name);
@@ -685,19 +686,31 @@ namespace AADS
         private void mainMap_Click(object sender, EventArgs e)
         {
         }
-        public bool check;
         private void mainMap_MouseClick_1(object sender, MouseEventArgs e)
         {
-            if (check)
+            if (vitSelectedCheck)
             {
-                var point = mainMap.FromLocalToLatLng(e.X, e.Y);
-                GMapOverlay markerOvl = new GMapOverlay("vitMarker");
-                GMarkerGoogle vitMarker = new GMarkerGoogle(point, GMarkerGoogleType.orange_small);
-                markerOvl.Markers.Add(vitMarker);
-                mainMap.Overlays.Add(markerOvl);
+                //var createMarker2 = new Views.VitalAsset.createMarker(e.X, e.Y);
+                //createMarker2.singleMark(e.X, e.Y);
+                createMarker(e.X, e.Y);
                 updateMap();
             }
 
+        }
+        void createMarker(int mouseX, int mouseY)
+        {
+            var point = mainMap.FromLocalToLatLng(mouseX, mouseY);
+            GMapOverlay markersOvl = new GMapOverlay("markers");
+            GMarkerGoogle marker = new GMarkerGoogle(point, GMarkerGoogleType.yellow_pushpin);
+            markersOvl.Markers.Add(marker);
+            mainMap.Overlays.Add(markersOvl);
+
+            //using (Views.VitalAsset.main mainVital = new Views.VitalAsset.main())
+            //{
+            //    mainVital.txtPointLat.Text = point.Lat.ToString();
+            //    mainVital.txtPointLng.Text = point.Lng.ToString();
+            //}
+            updateMap();
         }
         void updateMap()
         {
@@ -707,7 +720,7 @@ namespace AADS
 
         private void button7_Click(object sender, EventArgs e)
         {
-            check = true;
+            vitSelectedCheck = true;
         }
     }
 }

@@ -13,10 +13,11 @@ namespace AADS.Views.ShowCategory
     public partial class Marker : UserControl
     {
         public bool vitClick;
+        private mainForm main;
         public Marker()
         {
             InitializeComponent();
-            
+            main = new mainForm();
         }
 
         private void btnShowAiport_Click(object sender, EventArgs e)
@@ -57,6 +58,7 @@ namespace AADS.Views.ShowCategory
             var VitalAssetpage = new Views.VitalAsset.main();
             panelShowDetail.Controls.Clear();
             panelShowDetail.Controls.Add(VitalAssetpage);
+            main.vitSelectedCheck = true;
         }
 
         private void btnShowWeaponBattery_Click(object sender, EventArgs e)
