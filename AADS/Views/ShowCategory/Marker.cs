@@ -58,7 +58,7 @@ namespace AADS.Views.ShowCategory
             var VitalAssetpage = new Views.VitalAsset.main();
             panelShowDetail.Controls.Clear();
             panelShowDetail.Controls.Add(VitalAssetpage);
-            main.vitSelectedCheck = true;
+            main.test = true;
         }
 
         private void btnShowWeaponBattery_Click(object sender, EventArgs e)

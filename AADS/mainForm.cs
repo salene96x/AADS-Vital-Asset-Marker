@@ -693,6 +693,7 @@ namespace AADS
                 //var createMarker2 = new Views.VitalAsset.createMarker(e.X, e.Y);
                 //createMarker2.singleMark(e.X, e.Y);
                 createMarker(e.X, e.Y);
+               
                 updateMap();
             }
 
@@ -717,10 +718,16 @@ namespace AADS
             mainMap.Zoom += 0.1;
             mainMap.Zoom -= 0.1;
         }
-
+        public bool test;
         private void button7_Click(object sender, EventArgs e)
         {
-            vitSelectedCheck = true;
+            //vitSelectedCheck = true;
+            if (test)
+            {
+                MessageBox.Show("Test");
+            }
+            
         }
+
     }
 }
