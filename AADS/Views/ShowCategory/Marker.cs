@@ -52,13 +52,16 @@ namespace AADS.Views.ShowCategory
             panelShowDetail.Controls.Clear();
             panelShowDetail.Controls.Add(Landmarkpage);
         }
-
+        public bool click;
+        public event ButtonClick OnButtonClick;
         private void btnShowVitalAsset_Click(object sender, EventArgs e)
         {
             var VitalAssetpage = new Views.VitalAsset.main();
             panelShowDetail.Controls.Clear();
             panelShowDetail.Controls.Add(VitalAssetpage);
-            main.test = true;
+            mainForm main = new mainForm();
+            main.setVitClickedValue(true);
+
         }
 
         private void btnShowWeaponBattery_Click(object sender, EventArgs e)
@@ -67,5 +70,10 @@ namespace AADS.Views.ShowCategory
             panelShowDetail.Controls.Clear();
             panelShowDetail.Controls.Add(WeaponsBatterypage);
         }
+    }
+    public delegate void ButtonClick(UserControl control, ClickEventArgs e);
+    public class ClickEventArgs : EventArgs
+    {
+        public bool clicked { get; set; }
     }
 }

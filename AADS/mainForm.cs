@@ -688,15 +688,21 @@ namespace AADS
         }
         private void mainMap_MouseClick_1(object sender, MouseEventArgs e)
         {
-            if (vitSelectedCheck)
+            MessageBox.Show(this.check.ToString());
+            if (this.check) 
             {
-                //var createMarker2 = new Views.VitalAsset.createMarker(e.X, e.Y);
-                //createMarker2.singleMark(e.X, e.Y);
                 createMarker(e.X, e.Y);
-               
                 updateMap();
             }
 
+
+
+        }
+        private bool check = false;
+        public void setVitClickedValue(bool check)
+        {
+            this.check = check;
+            MessageBox.Show(this.check.ToString());
         }
         void createMarker(int mouseX, int mouseY)
         {
@@ -705,12 +711,6 @@ namespace AADS
             GMarkerGoogle marker = new GMarkerGoogle(point, GMarkerGoogleType.yellow_pushpin);
             markersOvl.Markers.Add(marker);
             mainMap.Overlays.Add(markersOvl);
-
-            //using (Views.VitalAsset.main mainVital = new Views.VitalAsset.main())
-            //{
-            //    mainVital.txtPointLat.Text = point.Lat.ToString();
-            //    mainVital.txtPointLng.Text = point.Lng.ToString();
-            //}
             updateMap();
         }
         void updateMap()
@@ -722,12 +722,9 @@ namespace AADS
         private void button7_Click(object sender, EventArgs e)
         {
             //vitSelectedCheck = true;
-            if (test)
-            {
-                MessageBox.Show("Test");
-            }
             
         }
+        private bool test2;
 
     }
 }
