@@ -510,7 +510,6 @@ namespace AADS
             label27Location = new Point(this.Width - label27.Width, label27.Location.Y);
 
 
-
         }
         private void closeBox_Click(object sender, EventArgs e)
         {
@@ -685,19 +684,33 @@ namespace AADS
         private void mainMap_Click(object sender, EventArgs e)
         {
         }
-        public bool check;
         private void mainMap_MouseClick_1(object sender, MouseEventArgs e)
         {
             if (check)
             {
-                var point = mainMap.FromLocalToLatLng(e.X, e.Y);
-                GMapOverlay markerOvl = new GMapOverlay("vitMarker");
-                GMarkerGoogle vitMarker = new GMarkerGoogle(point, GMarkerGoogleType.orange_small);
-                markerOvl.Markers.Add(vitMarker);
-                mainMap.Overlays.Add(markerOvl);
-                updateMap();
+                createMarker(e.X, e.Y);
+                currentMarker.IsVisible = false;
+                check = false;
             }
-
+        }
+        public static bool check;
+        public void setCheck(bool value)
+        {
+            check = value;
+        }
+        void createMarker(int x, int y)
+        {
+            var point = mainMap.FromLocalToLatLng(x, y);
+            GMapOverlay markerOvl = new GMapOverlay("vitMarker");
+            GMarkerGoogle vitMarker = new GMarkerGoogle(point, GMarkerGoogleType.yellow_pushpin);
+            markerOvl.Markers.Add(vitMarker);
+            mainMap.Overlays.Add(markerOvl);
+            vitMarker.IsHitTestVisible = true;
+            var vitalMain = new Views.VitalAsset.main(point);
+            vitalMain.setString();
+            panelRightShow.Controls.Clear();
+            panelRightShow.Controls.Add(vitalMain);
+            updateMap();
         }
         void updateMap()
         {

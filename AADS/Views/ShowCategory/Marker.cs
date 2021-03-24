@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GMap.NET;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -54,9 +55,11 @@ namespace AADS.Views.ShowCategory
 
         private void btnShowVitalAsset_Click(object sender, EventArgs e)
         {
-            var VitalAssetpage = new Views.VitalAsset.main();
+            var VitalAssetpage = new Views.VitalAsset.main(new PointLatLng(0, 0));
             panelShowDetail.Controls.Clear();
             panelShowDetail.Controls.Add(VitalAssetpage);
+            mainForm main = new mainForm();
+            main.setCheck(true);
         }
 
         private void btnShowWeaponBattery_Click(object sender, EventArgs e)

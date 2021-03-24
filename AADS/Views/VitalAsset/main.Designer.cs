@@ -104,6 +104,7 @@ namespace AADS.Views.VitalAsset
             this.Margin = new System.Windows.Forms.Padding(3, 5, 3, 5);
             this.Name = "main";
             this.Size = new System.Drawing.Size(468, 821);
+            this.Load += new System.EventHandler(this.main_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);

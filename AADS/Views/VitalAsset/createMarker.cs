@@ -27,9 +27,9 @@ namespace AADS.Views.VitalAsset
             
             markersOvl.Markers.Add(marker);
             mainForm.mainMap.Overlays.Add(markersOvl);
-            var main = new Views.VitalAsset.main();
-            main.txtPointLat.Text = point.Lat.ToString();
-            main.txtPointLng.Text = point.Lng.ToString();
+            //var main = new Views.VitalAsset.main();
+            //main.txtPointLat.Text = point.Lat.ToString();
+            //main.txtPointLng.Text = point.Lng.ToString();
             updateMap();
         }
         void updateMap()
