@@ -42,7 +42,7 @@ namespace AADS.Views.VitalAsset
             this.rdbManual = new System.Windows.Forms.RadioButton();
             this.rdbAuto = new System.Windows.Forms.RadioButton();
             this.tbPriority = new System.Windows.Forms.TrackBar();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPriority = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.lblName = new System.Windows.Forms.Label();
             this.txtProvince = new System.Windows.Forms.TextBox();
@@ -56,6 +56,7 @@ namespace AADS.Views.VitalAsset
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.btnMark = new System.Windows.Forms.Button();
+            this.btnConfirm = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbPriority)).BeginInit();
             this.SuspendLayout();
@@ -131,10 +132,16 @@ namespace AADS.Views.VitalAsset
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Political",
+            "Military",
+            "Psychological",
+            "Economic"});
             this.comboBox1.Location = new System.Drawing.Point(140, 192);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(131, 30);
             this.comboBox1.TabIndex = 68;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -182,17 +189,22 @@ namespace AADS.Views.VitalAsset
             // tbPriority
             // 
             this.tbPriority.Location = new System.Drawing.Point(173, 234);
+            this.tbPriority.Maximum = 99;
+            this.tbPriority.Minimum = 1;
             this.tbPriority.Name = "tbPriority";
             this.tbPriority.Size = new System.Drawing.Size(98, 45);
             this.tbPriority.TabIndex = 73;
+            this.tbPriority.Value = 1;
+            this.tbPriority.Scroll += new System.EventHandler(this.tbPriority_Scroll);
             // 
-            // textBox1
+            // txtPriority
             // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(140, 234);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(27, 28);
-            this.textBox1.TabIndex = 74;
+            this.txtPriority.Location = new System.Drawing.Point(140, 234);
+            this.txtPriority.Name = "txtPriority";
+            this.txtPriority.Size = new System.Drawing.Size(27, 28);
+            this.txtPriority.TabIndex = 74;
+            this.txtPriority.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPriority.TextChanged += new System.EventHandler(this.txtPriority_TextChanged);
             // 
             // txtName
             // 
@@ -313,10 +325,22 @@ namespace AADS.Views.VitalAsset
             this.btnMark.Visible = false;
             this.btnMark.Click += new System.EventHandler(this.btnMark_Click);
             // 
+            // btnConfirm
+            // 
+            this.btnConfirm.Font = new System.Drawing.Font("TH SarabunPSK", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirm.Location = new System.Drawing.Point(6, 450);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(265, 52);
+            this.btnConfirm.TabIndex = 88;
+            this.btnConfirm.Text = "Confirm";
+            this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.btnMark);
             this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.label10);
@@ -330,7 +354,7 @@ namespace AADS.Views.VitalAsset
             this.Controls.Add(this.label6);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.lblName);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtPriority);
             this.Controls.Add(this.tbPriority);
             this.Controls.Add(this.rdbAuto);
             this.Controls.Add(this.rdbManual);
@@ -370,7 +394,7 @@ namespace AADS.Views.VitalAsset
         private System.Windows.Forms.RadioButton rdbManual;
         private System.Windows.Forms.RadioButton rdbAuto;
         private System.Windows.Forms.TrackBar tbPriority;
-        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.TextBox txtPriority;
         public System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label lblName;
         public System.Windows.Forms.TextBox txtProvince;
@@ -384,5 +408,6 @@ namespace AADS.Views.VitalAsset
         private System.Windows.Forms.ComboBox comboBox3;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnMark;
+        private System.Windows.Forms.Button btnConfirm;
     }
 }

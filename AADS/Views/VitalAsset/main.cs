@@ -19,8 +19,10 @@ namespace AADS.Views.VitalAsset
         private mainForm mainForm1;
         public static string txtLat;
         public static string txtLng;
-        public static PointLatLng pointP;
         private static main instance;
+        private static GMarkerGoogle marker;
+        private static GMapOverlay vitOverlay;
+        private static Bitmap vitPolitical;
         public main()
         {
             mainForm1 = mainForm.GetInstance();
@@ -41,8 +43,7 @@ namespace AADS.Views.VitalAsset
 
         private void main_Load(object sender, EventArgs e)
         {
-            txtPointLat.Text = txtLat;
-            txtPointLng.Text = txtLng;
+            loadIcons();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -82,10 +83,10 @@ namespace AADS.Views.VitalAsset
         {
             double lat = Convert.ToDouble(txtPointLat.Text);
             double lng = Convert.ToDouble(txtPointLng.Text);
-            GMarkerGoogle marker = new GMarkerGoogle(new PointLatLng(lat, lng), GMarkerGoogleType.red_pushpin);
-            GMapOverlay vitOverlayManual = new GMapOverlay("vitManual");
-            vitOverlayManual.Markers.Add(marker);
-            mainForm1.mainMap.Overlays.Add(vitOverlayManual);
+            marker = new GMarkerGoogle(new PointLatLng(lat, lng), GMarkerGoogleType.red_pushpin);
+            vitOverlay = new GMapOverlay("vitManual");
+            vitOverlay.Markers.Add(marker);
+            mainForm1.mainMap.Overlays.Add(vitOverlay);
             mainForm1.setCurrentMarkerStatus(false);
         }
 
@@ -93,6 +94,88 @@ namespace AADS.Views.VitalAsset
         {
             manualMark();
             mainForm1.updateMap();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            mainForm1.mainMap.Overlays.Remove(vitOverlay);
+            double lat = Convert.ToDouble(txtPointLat.Text);
+            double lng = Convert.ToDouble(txtPointLng.Text);
+            marker = new GMarkerGoogle(new PointLatLng(lat, lng), vitPolitical);
+            vitOverlay = new GMapOverlay(comboBox1.SelectedItem.ToString());
+            vitOverlay.Markers.Add(marker);
+            mainForm1.mainMap.Overlays.Add(vitOverlay);
+            mainForm1.updateMap();
+        }
+        void loadIcons()
+        {
+            Image politicalIcon = AADS.Properties.Resources.vitalAssetPolitical;
+            vitPolitical = new Bitmap(politicalIcon);
+        }
+
+        private void tbPriority_Scroll(object sender, EventArgs e)
+        {
+            txtPriority.Text = tbPriority.Value.ToString();
+        }
+
+        private void txtPriority_TextChanged(object sender, EventArgs e)
+        {
+            if (txtPriority.Text is null)
+            {
+                tbPriority.Value = 1;
+                txtPriority.Text = tbPriority.Value.ToString();
+            }
+            else
+            {
+                try
+                {
+                    tbPriority.Value = (int)Convert.ToInt16(txtPriority.Text);
+                }
+                catch
+                {
+                    txtPriority.Text = tbPriority.Value.ToString();
+                }
+                
+            }
+            
+        }
+
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            bool nullChecked = CheckNullTxt();
+            if (nullChecked)
+            {
+                DialogResult dialogResult = MessageBox.Show("ยืนยันที่จะเพิ่มตำบลสำคัญใช่หรือไม่", "ตำบลสำคัญ", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult is DialogResult.Yes)
+                {
+                    MessageBox.Show("เพิ่มตำบลสำคัญเสร็จสิ้น", "ตำบลสำคัญ", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
+            {
+                MessageBox.Show("เพิ่มตำบลสำคัญไม่เสร็จสิ้น กรุณากรอกข้อมูลให้ครบถ้วน", "ตำบลสำคัญ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            
+        }
+        private bool CheckNullTxt()
+        {
+            foreach (var txt in this.Controls)
+            {
+                if (txt.GetType() is TextBox)
+                {
+                    TextBox txt2 = txt as TextBox;
+                    if (txt2.Text is null)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+                
+            }
+            return false;
         }
     }
 }

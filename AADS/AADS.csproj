@@ -539,7 +539,21 @@
   <ItemGroup>
     <None Include="Resources\45cf3151e954736717470cc74e34b7a0-removebg-preview.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\vitalAssetPolitical.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\capitol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\capitol %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\location.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\location %281%29.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
