@@ -76,7 +76,7 @@ namespace AADS.Views.ShowCategory
             // 
             // panelShowDetail
             // 
-            this.panelShowDetail.BackColor = System.Drawing.Color.Maroon;
+            this.panelShowDetail.BackColor = System.Drawing.Color.Silver;
             this.panelShowDetail.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelShowDetail.Location = new System.Drawing.Point(0, 206);
             this.panelShowDetail.Name = "panelShowDetail";

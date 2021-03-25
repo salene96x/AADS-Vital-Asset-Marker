@@ -1,4 +1,5 @@
-﻿using GMap.NET.WindowsForms;
+﻿using GMap.NET;
+using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
 using System;
 using System.Collections.Generic;
@@ -11,37 +12,40 @@ namespace AADS.Views.VitalAsset
 {
     public class createMarker
     {
-        private static mainForm main;
+        private mainForm main;
         private int mouseX;
         private int mouseY;
+        private VitalAsset.main vitalMain;
+        private PointLatLng point;
         public createMarker(int x, int y)
-    {   
+    {
+            main = mainForm.GetInstance();
             mouseX = x;
             mouseY = y;
     }
-        public void singleMark(int x, int y)
+        public void singleMark()
         {
-            main = new mainForm();
-            var point = main.mainMap.FromLocalToLatLng(mouseX, mouseY);
+            point = main.mainMap.FromLocalToLatLng(mouseX, mouseY);
             GMapOverlay markersOvl = new GMapOverlay("markers");
             GMarkerGoogle marker = new GMarkerGoogle(point, GMarkerGoogleType.red);
-            
             markersOvl.Markers.Add(marker);
             main.mainMap.Overlays.Add(markersOvl);
-
-            using (Views.VitalAsset.main main = new main(point))
-            {
-                main mainVital = new main(point);
-                mainVital.txtPointLat.Text = point.Lat.ToString();
-                mainVital.txtPointLng.Text = point.Lng.ToString();
-            }
+            setValueVital();
+            main.setVitClickedValue(false);
+            main.setCurrentMarkerStatus(false);
             updateMap();
         }
         void updateMap()
         {
-            var mainForm = new AADS.mainForm();
-            mainForm.mainMap.Zoom -= 0.1;
-            mainForm.mainMap.Zoom += 0.1;
+            main.mainMap.Zoom += 0.01;
+            main.mainMap.Zoom -= 0.01;
+        }
+
+        void setValueVital()
+        {
+            vitalMain = VitalAsset.main.getInstace();
+            vitalMain.txtPointLat.Text = point.Lat.ToString();
+            vitalMain.txtPointLng.Text = point.Lng.ToString();
         }
     }
 }

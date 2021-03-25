@@ -50,7 +50,6 @@ namespace AADS
             this.label22 = new System.Windows.Forms.Label();
             this.datePanel = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.button7 = new System.Windows.Forms.Button();
             this.time_label = new System.Windows.Forms.Label();
             this.dateLabel = new System.Windows.Forms.Label();
             this.labelmode = new System.Windows.Forms.Label();
@@ -389,7 +388,6 @@ namespace AADS
             // 
             // panel8
             // 
-            this.panel8.Controls.Add(this.button7);
             this.panel8.Controls.Add(this.time_label);
             this.panel8.Controls.Add(this.dateLabel);
             this.panel8.Controls.Add(this.labelmode);
@@ -400,16 +398,6 @@ namespace AADS
             this.panel8.Padding = new System.Windows.Forms.Padding(11, 0, 11, 0);
             this.panel8.Size = new System.Drawing.Size(240, 60);
             this.panel8.TabIndex = 8;
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(6, 22);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 8;
-            this.button7.Text = "button7";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // time_label
             // 
@@ -1378,6 +1366,7 @@ namespace AADS
             // panelRightShow
             // 
             this.panelRightShow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelRightShow.ForeColor = System.Drawing.Color.Black;
             this.panelRightShow.Location = new System.Drawing.Point(0, 162);
             this.panelRightShow.Name = "panelRightShow";
             this.panelRightShow.Size = new System.Drawing.Size(292, 304);
@@ -1740,7 +1729,6 @@ namespace AADS
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;
         public GMap.NET.WindowsForms.GMapControl mainMap;
-        private System.Windows.Forms.Button button7;
     }
 }
 

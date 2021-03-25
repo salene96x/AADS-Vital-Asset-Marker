@@ -56,11 +56,10 @@ namespace AADS.Views.ShowCategory
         public event ButtonClick OnButtonClick;
         private void btnShowVitalAsset_Click(object sender, EventArgs e)
         {
-            var VitalAssetpage = new Views.VitalAsset.main(new GMap.NET.PointLatLng(0,0));
+            var VitalAssetpage = new Views.VitalAsset.main();
             panelShowDetail.Controls.Clear();
             panelShowDetail.Controls.Add(VitalAssetpage);
             main.setVitClickedValue(true);
-
         }
 
         private void btnShowWeaponBattery_Click(object sender, EventArgs e)

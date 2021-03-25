@@ -42,6 +42,9 @@ namespace AADS
         List<MapMode> mapModes = new List<MapMode>();
         GMapMarker currentMarker;
         GMapMarkerRect CurentRectMarker = null;
+
+
+
         GMapMarker markertag = null;
         GMapPolygon polygon;
         string action = null;
@@ -687,58 +690,27 @@ namespace AADS
         }
         private void mainMap_MouseClick_1(object sender, MouseEventArgs e)
         {
-            if (check) 
+            if (vitCheck) 
             {
-                //createVitMarker marker = new createVitMarker();
-                //marker.createMarker(e.X, e.Y);
-                createMarker(e.X, e.Y);
+                var createMarker1 = new Views.VitalAsset.createMarker(e.X, e.Y);
+                createMarker1.singleMark();
                 updateMap();
             }
         }
-        public static GMaps mapMain;
-        private static bool check = false;
-        public static GMapMarker vitMarker;
-        public static GMapOverlay vitOverlay;
+        private static bool vitCheck = false;
+        internal void setCurrentMarkerStatus(bool status)
+        {
+            currentMarker.IsVisible = status;
+        }
+
         public void setVitClickedValue(bool checkVit)
         {
-            check = checkVit;
+            vitCheck = checkVit;
         }
-        public void addMainMapOverlays(GMapOverlay ovl)
-        {
-            mainMap.Overlays.Add(ovl);
-        }
-        void setGmapVitMarker(GMarkerGoogle marker, GMapOverlay markerOvl)
-        {
-            vitMarker = marker;
-            vitOverlay = markerOvl;
-            mainMap.Overlays.Add(vitOverlay);
-        }
-        void createMarker(int mouseX, int mouseY)
-        {
-            var point = mainMap.FromLocalToLatLng(mouseX, mouseY);
-            GMapOverlay markersOvl = new GMapOverlay("markers");
-            GMarkerGoogle marker = new GMarkerGoogle(point, GMarkerGoogleType.yellow_pushpin);
-            markersOvl.Markers.Add(marker);
-            mainMap.Overlays.Add(markersOvl);
-            check = false;
-            currentMarker.IsVisible = false;
-            updateMap();
-            var vitMain = new Views.VitalAsset.main(point);
-            vitMain.setString();
-            panelRightShow.Controls.Clear();
-            panelRightShow.Controls.Add(vitMain);
-
-        }
-        void updateMap()
+        public void updateMap()
         {
             mainMap.Zoom += 0.1;
             mainMap.Zoom -= 0.1;
         }
-        private void button7_Click(object sender, EventArgs e)
-        {
-            //vitSelectedCheck = true;
-            
-        }
-        
     }
 }
