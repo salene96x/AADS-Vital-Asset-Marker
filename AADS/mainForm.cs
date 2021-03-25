@@ -682,27 +682,36 @@ namespace AADS
             panelRightUnit.Visible = false;
            
         }
-
         private void mainMap_Click(object sender, EventArgs e)
         {
         }
         private void mainMap_MouseClick_1(object sender, MouseEventArgs e)
         {
-            MessageBox.Show(this.check.ToString());
-            if (this.check) 
+            if (check) 
             {
+                //createVitMarker marker = new createVitMarker();
+                //marker.createMarker(e.X, e.Y);
                 createMarker(e.X, e.Y);
                 updateMap();
             }
-
-
-
         }
-        private bool check = false;
-        public void setVitClickedValue(bool check)
+        public static GMaps mapMain;
+        private static bool check = false;
+        public static GMapMarker vitMarker;
+        public static GMapOverlay vitOverlay;
+        public void setVitClickedValue(bool checkVit)
         {
-            this.check = check;
-            MessageBox.Show(this.check.ToString());
+            check = checkVit;
+        }
+        public void addMainMapOverlays(GMapOverlay ovl)
+        {
+            mainMap.Overlays.Add(ovl);
+        }
+        void setGmapVitMarker(GMarkerGoogle marker, GMapOverlay markerOvl)
+        {
+            vitMarker = marker;
+            vitOverlay = markerOvl;
+            mainMap.Overlays.Add(vitOverlay);
         }
         void createMarker(int mouseX, int mouseY)
         {
@@ -711,20 +720,25 @@ namespace AADS
             GMarkerGoogle marker = new GMarkerGoogle(point, GMarkerGoogleType.yellow_pushpin);
             markersOvl.Markers.Add(marker);
             mainMap.Overlays.Add(markersOvl);
+            check = false;
+            currentMarker.IsVisible = false;
             updateMap();
+            var vitMain = new Views.VitalAsset.main(point);
+            vitMain.setString();
+            panelRightShow.Controls.Clear();
+            panelRightShow.Controls.Add(vitMain);
+
         }
         void updateMap()
         {
             mainMap.Zoom += 0.1;
             mainMap.Zoom -= 0.1;
         }
-        public bool test;
         private void button7_Click(object sender, EventArgs e)
         {
             //vitSelectedCheck = true;
             
         }
-        private bool test2;
-
+        
     }
 }

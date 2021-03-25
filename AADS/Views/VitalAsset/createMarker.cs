@@ -11,7 +11,7 @@ namespace AADS.Views.VitalAsset
 {
     public class createMarker
     {
-        private mainForm main;
+        private static mainForm main;
         private int mouseX;
         private int mouseY;
         public createMarker(int x, int y)
@@ -29,12 +29,12 @@ namespace AADS.Views.VitalAsset
             markersOvl.Markers.Add(marker);
             main.mainMap.Overlays.Add(markersOvl);
 
-            //using (Views.VitalAsset.main main = new main())
-            //{
-            //    main mainVital = new main();
-            //    mainVital.txtPointLat.Text = point.Lat.ToString();
-            //    mainVital.txtPointLng.Text = point.Lng.ToString();
-            //}
+            using (Views.VitalAsset.main main = new main(point))
+            {
+                main mainVital = new main(point);
+                mainVital.txtPointLat.Text = point.Lat.ToString();
+                mainVital.txtPointLng.Text = point.Lng.ToString();
+            }
             updateMap();
         }
         void updateMap()
