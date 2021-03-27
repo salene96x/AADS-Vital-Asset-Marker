@@ -110,6 +110,7 @@ namespace AADS.Views.VitalAsset
             this.txtPointLat.Name = "txtPointLat";
             this.txtPointLat.Size = new System.Drawing.Size(131, 28);
             this.txtPointLat.TabIndex = 65;
+            this.txtPointLat.TextChanged += new System.EventHandler(this.txtPointLat_TextChanged);
             // 
             // txtPointLng
             // 
@@ -131,16 +132,20 @@ namespace AADS.Views.VitalAsset
             // 
             // comboBox1
             // 
+            this.comboBox1.Enabled = false;
+            this.comboBox1.Font = new System.Drawing.Font("TH SarabunPSK", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
+            "Asset Type",
             "Political",
             "Military",
             "Psychological",
             "Economic"});
             this.comboBox1.Location = new System.Drawing.Point(140, 192);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(131, 30);
+            this.comboBox1.Size = new System.Drawing.Size(131, 36);
             this.comboBox1.TabIndex = 68;
+            this.comboBox1.Text = "Asset Type";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label4
@@ -212,7 +217,6 @@ namespace AADS.Views.VitalAsset
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(131, 28);
             this.txtName.TabIndex = 76;
-            this.txtName.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // lblName
             // 
@@ -223,7 +227,6 @@ namespace AADS.Views.VitalAsset
             this.lblName.Size = new System.Drawing.Size(100, 28);
             this.lblName.TabIndex = 75;
             this.lblName.Text = "Asset Name : ";
-            this.lblName.Click += new System.EventHandler(this.label6_Click);
             // 
             // txtProvince
             // 
@@ -272,10 +275,13 @@ namespace AADS.Views.VitalAsset
             // comboBox2
             // 
             this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
+            "Unit001"});
             this.comboBox2.Location = new System.Drawing.Point(140, 336);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(131, 30);
             this.comboBox2.TabIndex = 82;
+            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // txtUnitStatus
             // 
@@ -298,6 +304,9 @@ namespace AADS.Views.VitalAsset
             // comboBox3
             // 
             this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Items.AddRange(new object[] {
+            "ผู้บังคับบัญชาที่รับผิดชอบ",
+            "พล.อ.ประยุทธ์ จันทร์โอชา"});
             this.comboBox3.Location = new System.Drawing.Point(140, 406);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(131, 30);
