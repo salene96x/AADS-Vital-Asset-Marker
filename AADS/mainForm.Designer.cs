@@ -134,6 +134,10 @@ namespace AADS
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timerOpen = new System.Windows.Forms.Timer(this.components);
             this.timerClose = new System.Windows.Forms.Timer(this.components);
+            this.menuMarker = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.menuAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuDel = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.panelTop.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -169,6 +173,7 @@ namespace AADS
             this.panelRightUnit.SuspendLayout();
             this.panelRightMap.SuspendLayout();
             this.paneltype.SuspendLayout();
+            this.menuMarker.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelTop
@@ -710,6 +715,7 @@ namespace AADS
             this.mainMap.Size = new System.Drawing.Size(1024, 515);
             this.mainMap.TabIndex = 4;
             this.mainMap.Zoom = 0D;
+            this.mainMap.OnMarkerClick += new GMap.NET.WindowsForms.MarkerClick(this.mainMap_OnMarkerClick_1);
             this.mainMap.OnMapZoomChanged += new GMap.NET.MapZoomChanged(this.mainMap_OnMapZoomChanged);
             this.mainMap.Click += new System.EventHandler(this.mainMap_Click);
             this.mainMap.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mainMap_MouseClick_1);
@@ -1546,6 +1552,37 @@ namespace AADS
             this.timerClose.Interval = 1;
             this.timerClose.Tick += new System.EventHandler(this.timerClose_);
             // 
+            // menuMarker
+            // 
+            this.menuMarker.Font = new System.Drawing.Font("TH SarabunPSK", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuMarker.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuAdd,
+            this.menuDel,
+            this.menuEdit});
+            this.menuMarker.Name = "contextMenuStrip1";
+            this.menuMarker.Size = new System.Drawing.Size(181, 104);
+            this.menuMarker.Text = "จัดการมาร์คเกอร์";
+            this.menuMarker.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuMarker_ItemClicked);
+            this.menuMarker.Click += new System.EventHandler(this.menuMarker_Click);
+            // 
+            // menuAdd
+            // 
+            this.menuAdd.Name = "menuAdd";
+            this.menuAdd.Size = new System.Drawing.Size(180, 26);
+            this.menuAdd.Text = "เพิ่ม";
+            // 
+            // menuDel
+            // 
+            this.menuDel.Name = "menuDel";
+            this.menuDel.Size = new System.Drawing.Size(180, 26);
+            this.menuDel.Text = "ลบ";
+            // 
+            // menuEdit
+            // 
+            this.menuEdit.Name = "menuEdit";
+            this.menuEdit.Size = new System.Drawing.Size(180, 26);
+            this.menuEdit.Text = "แก้ไข";
+            // 
             // mainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1619,6 +1656,7 @@ namespace AADS
             this.panelRightUnit.ResumeLayout(false);
             this.panelRightMap.ResumeLayout(false);
             this.paneltype.ResumeLayout(false);
+            this.menuMarker.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1729,6 +1767,10 @@ namespace AADS
         private System.Windows.Forms.Button button10;
         private System.Windows.Forms.Button button11;
         public GMap.NET.WindowsForms.GMapControl mainMap;
+        private System.Windows.Forms.ContextMenuStrip menuMarker;
+        private System.Windows.Forms.ToolStripMenuItem menuAdd;
+        private System.Windows.Forms.ToolStripMenuItem menuDel;
+        private System.Windows.Forms.ToolStripMenuItem menuEdit;
     }
 }
 

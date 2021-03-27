@@ -162,15 +162,12 @@ namespace AADS.Views.VitalAsset
                 {
                     MessageBox.Show("เพิ่มตำบลสำคัญเสร็จสิ้น", "ตำบลสำคัญ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     reset();
-                }
-                
+                }  
             }
             else
             {
                 MessageBox.Show("เพิ่มตำบลสำคัญไม่เสร็จสิ้น กรุณากรอกข้อมูลให้ครบถ้วน", "ตำบลสำคัญ", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            
-            
+            }    
         }
         private bool CheckNullTxt()
         {
@@ -231,8 +228,6 @@ namespace AADS.Views.VitalAsset
                     var cbbX = x as ComboBox;
                     cbbX.SelectedIndex = 0;
                 }
-                
-
             }
         }
     }

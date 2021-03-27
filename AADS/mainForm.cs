@@ -712,5 +712,39 @@ namespace AADS
             mainMap.Zoom += 0.1;
             mainMap.Zoom -= 0.1;
         }
+        private static GMapMarker currentItem;
+        private static GMapOverlay removeOvl;
+
+        private void mainMap_OnMarkerClick_1(GMapMarker item, MouseEventArgs e)
+        {
+            currentItem = item;
+            if (e.Button == MouseButtons.Right)
+            {
+                menuMarker.Show(Cursor.Position);
+            }
+        }
+
+        private void menuMarker_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void menuMarker_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            ToolStripItem clickedItem = e.ClickedItem;
+            string itemName = clickedItem.Text;
+            if (itemName.Equals("แก้ไข"))
+            {
+                MessageBox.Show("แก้ไขข้อมูล");
+            }
+            else if (itemName.Equals("ลบ"))
+            {
+                
+            }
+            else
+            {
+                MessageBox.Show("เพิ่ม");
+            }
+
+        }
     }
 }
