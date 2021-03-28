@@ -53,7 +53,6 @@ namespace AADS
 
         MarkerAndPolygon markerAndPolygon;
         public RadarOverlay radarP;
-        public bool vitSelectedCheck;
         public GMapOverlay GetOverlay(string Name)
         {
             return mainMap.Overlays.FirstOrDefault(x => x.Id == Name);
@@ -713,11 +712,13 @@ namespace AADS
             mainMap.Zoom -= 0.1;
         }
         private static GMapMarker currentItem;
+        private static string currentItemId;
         private static GMapOverlay removeOvl;
 
         private void mainMap_OnMarkerClick_1(GMapMarker item, MouseEventArgs e)
         {
             currentItem = item;
+            currentItemId = item.Overlay.Id;
             if (e.Button == MouseButtons.Right)
             {
                 menuMarker.Show(Cursor.Position);
@@ -737,14 +738,22 @@ namespace AADS
                 MessageBox.Show("แก้ไขข้อมูล");
             }
             else if (itemName.Equals("ลบ"))
-            {
-                
+            { 
+                if (currentItemId.Equals("vitMarkers"))
+                {
+                    mainMap.Overlays.Remove(removeOvl);
+                    updateMap();
+                    mainMap.Refresh();
+                }
             }
             else
             {
                 MessageBox.Show("เพิ่ม");
             }
-
+        }
+        public void getVitOverlay(GMapOverlay ovl)
+        {
+            removeOvl = ovl;
         }
     }
 }

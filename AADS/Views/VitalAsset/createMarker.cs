@@ -35,6 +35,7 @@ namespace AADS.Views.VitalAsset
             setValueVital();
             main.setVitClickedValue(false);
             main.setCurrentMarkerStatus(false);
+            main.getVitOverlay(markersOvl);
             updateMap();
         }
         public GMapOverlay getOverlay()

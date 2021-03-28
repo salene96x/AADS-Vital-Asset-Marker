@@ -59,7 +59,8 @@ namespace AADS.Views.VitalAsset
                 txtPointLng.Enabled = true;
                 btnMark.Visible = true;
                 
-            } else if (rdbAuto.Checked)
+            } 
+            else if (rdbAuto.Checked)
             {
                 mainForm1.setVitClickedValue(true);
             }
@@ -72,8 +73,7 @@ namespace AADS.Views.VitalAsset
                 vitOverlay = new GMapOverlay("vitManual");
                 vitOverlay.Markers.Add(marker);
                 mainForm1.mainMap.Overlays.Add(vitOverlay);
-                mainForm1.setCurrentMarkerStatus(false);
-            
+                mainForm1.setCurrentMarkerStatus(false);  
         }
 
         private void btnMark_Click(object sender, EventArgs e)

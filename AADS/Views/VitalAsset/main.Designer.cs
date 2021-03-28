@@ -190,6 +190,7 @@ namespace AADS.Views.VitalAsset
             this.rdbAuto.TabStop = true;
             this.rdbAuto.Text = "Auto";
             this.rdbAuto.UseVisualStyleBackColor = true;
+            this.rdbAuto.CheckedChanged += new System.EventHandler(this.rdb_CheckedChanged);
             // 
             // tbPriority
             // 
