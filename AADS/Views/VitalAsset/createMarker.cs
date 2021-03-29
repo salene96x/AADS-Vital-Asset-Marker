@@ -15,9 +15,11 @@ namespace AADS.Views.VitalAsset
         private mainForm main;
         private int mouseX;
         private int mouseY;
-        private VitalAsset.main vitalMain;
+        private VitalAsset.main vitalMain = VitalAsset.main.getInstace();
         private PointLatLng point;
         public static GMapOverlay ovl;
+        private mainForm mainForm1 = mainForm.GetInstance();
+        public static GMarkerGoogle marker;
         public createMarker(int x, int y)
     {
             main = mainForm.GetInstance();
@@ -27,16 +29,17 @@ namespace AADS.Views.VitalAsset
         public void singleMark()
         {
             point = main.mainMap.FromLocalToLatLng(mouseX, mouseY);
-            GMapOverlay markersOvl = new GMapOverlay("vitMarkers");
-            ovl = markersOvl;
-            GMarkerGoogle marker = new GMarkerGoogle(point, GMarkerGoogleType.red);
-            markersOvl.Markers.Add(marker);
-            main.mainMap.Overlays.Add(markersOvl);
+            GMapOverlay overlay = mainForm1.GetOverlay("markersP");
+            marker = new GMarkerGoogle(point, GMarkerGoogleType.red);
+            overlay.Markers.Add(marker);
             setValueVital();
             main.setVitClickedValue(false);
             main.setCurrentMarkerStatus(false);
-            main.getVitOverlay(markersOvl);
             updateMap();
+        }
+        public GMarkerGoogle getMarker()
+        {
+            return marker;
         }
         public GMapOverlay getOverlay()
         {

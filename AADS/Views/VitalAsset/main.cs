@@ -70,9 +70,9 @@ namespace AADS.Views.VitalAsset
                 double lat = Convert.ToDouble(txtPointLat.Text);
                 double lng = Convert.ToDouble(txtPointLng.Text);
                 marker = new GMarkerGoogle(new PointLatLng(lat, lng), GMarkerGoogleType.red_pushpin);
-                vitOverlay = new GMapOverlay("vitManual");
-                vitOverlay.Markers.Add(marker);
-                mainForm1.mainMap.Overlays.Add(vitOverlay);
+                GMapOverlay overlay = mainForm1.GetOverlay("markersP");
+                overlay.Markers.Add(marker);
+                //mainForm1.mainMap.Overlays.Add(vitOverlay);
                 mainForm1.setCurrentMarkerStatus(false);  
         }
 
@@ -85,7 +85,12 @@ namespace AADS.Views.VitalAsset
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             createMarker removeMarker = new createMarker(0, 0);
-            mainForm1.mainMap.Overlays.Remove(removeMarker.getOverlay());
+            if (rdbAuto.Checked)
+            {
+                marker = removeMarker.getMarker();
+            }
+            GMapOverlay overlay = mainForm1.GetOverlay("markersP");
+            overlay.Markers.Remove(marker);
             try
             {
                 if (comboBox1.SelectedIndex != 0)
@@ -117,10 +122,7 @@ namespace AADS.Views.VitalAsset
             double lat = Convert.ToDouble(txtPointLat.Text);
             double lng = Convert.ToDouble(txtPointLng.Text);
             marker = new GMarkerGoogle(new PointLatLng(lat, lng), vitIcon);
-            GMapOverlay overlay = mainForm1.GetOverlay("markersP");
             overlay.Markers.Add(marker);
-            mainForm1.mainMap.Overlays.Add(overlay);
-
             mainForm1.updateMap();    
                 
                 
@@ -194,8 +196,7 @@ namespace AADS.Views.VitalAsset
                     {
                         return true;
                     }
-                }
-                
+                }   
             }
             return false;
         }
@@ -239,6 +240,10 @@ namespace AADS.Views.VitalAsset
                     cbbX.SelectedIndex = 0;
                 }
             }
+        }
+        public void setRdbAutoChecked(bool status)
+        {
+            rdbAuto.Checked = status;
         }
     }
 }

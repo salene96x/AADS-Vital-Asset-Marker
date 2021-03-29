@@ -26,6 +26,7 @@ namespace AADS
     public partial class mainForm : Form
     {
         private List<PointLatLng> _points = new List<PointLatLng>();
+        //public Dictionary <int Id, GMarkerGoogle marker> markersDict;
         internal readonly GMapOverlay top = new GMapOverlay();
         internal readonly GMapOverlay markersP = new GMapOverlay("markersP");
         internal readonly GMapOverlay Radar = new GMapOverlay("Radar");
@@ -722,7 +723,6 @@ namespace AADS
             currentItemId = item.Overlay.Id;
             if (e.Button == MouseButtons.Right)
             {
-                currentItem.IsHitTestVisible = true;
                 menuMarker.Show(Cursor.Position);
             }
         }
@@ -742,11 +742,9 @@ namespace AADS
             else if (itemName.Equals("ลบ"))
             {
                 markersP.Markers.Remove(currentItem);
+                var mainVitalAsset = Views.VitalAsset.main.getInstace();
+                mainVitalAsset.setRdbAutoChecked(false);
             }
-        }
-        public void getVitOverlay(GMapOverlay ovl)
-        {
-            removeOvl = ovl;
         }
     }
 }
