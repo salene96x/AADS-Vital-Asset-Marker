@@ -17,7 +17,6 @@ namespace AADS.Views.VitalAsset
         private int mouseY;
         private VitalAsset.main vitalMain = VitalAsset.main.getInstace();
         private PointLatLng point;
-        public static GMapOverlay ovl;
         private mainForm mainForm1 = mainForm.GetInstance();
         public static GMarkerGoogle marker;
         public createMarker(int x, int y)
@@ -35,15 +34,12 @@ namespace AADS.Views.VitalAsset
             setValueVital();
             main.setVitClickedValue(false);
             main.setCurrentMarkerStatus(false);
+            vitalMain.setId();
             updateMap();
         }
         public GMarkerGoogle getMarker()
         {
             return marker;
-        }
-        public GMapOverlay getOverlay()
-        {
-            return ovl;
         }
         void updateMap()
         {

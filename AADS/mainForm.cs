@@ -37,8 +37,9 @@ namespace AADS
         internal readonly GMapOverlay Test = new GMapOverlay("Test");
         internal readonly GMapOverlay BordersTrack = new GMapOverlay("BordersTrack");
         internal readonly GMapOverlay midlineDistance = new GMapOverlay("midlineDistance");
-
         internal readonly GMapOverlay minMapOverlay = new GMapOverlay("minMapOverlay");
+        internal readonly GMapOverlay routeAndCorridor = new GMapOverlay("routeAndCorridor");
+        internal readonly Dictionary<string, List<string>> vitMarkerDict = new Dictionary<string, List<string>>();
 
         List<MapMode> mapModes = new List<MapMode>();
         GMapMarker currentMarker;
@@ -744,6 +745,8 @@ namespace AADS
                 markersP.Markers.Remove(currentItem);
                 var mainVitalAsset = Views.VitalAsset.main.getInstace();
                 mainVitalAsset.setRdbAutoChecked(false);
+                mainVitalAsset.txtPointLat.Text = "";
+                mainVitalAsset.txtPointLng.Text = "";
             }
         }
     }

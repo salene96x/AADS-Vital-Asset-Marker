@@ -20,12 +20,15 @@ namespace AADS.Views.VitalAsset
         private double check1;
         private double check2;
         private TextBox txt2;
+        private static int counter = 101;
+        private static string Id;
 
         public main()
         {
             mainForm1 = mainForm.GetInstance();
             instance = this;
             InitializeComponent();
+            Id = "V" + counter + "";
         }
 
         public void setString(string lat, string lng)
@@ -123,8 +126,8 @@ namespace AADS.Views.VitalAsset
             double lng = Convert.ToDouble(txtPointLng.Text);
             marker = new GMarkerGoogle(new PointLatLng(lat, lng), vitIcon);
             overlay.Markers.Add(marker);
-            mainForm1.updateMap();    
-                
+            mainForm1.updateMap();
+            counter++;
                 
             
         }
@@ -135,6 +138,15 @@ namespace AADS.Views.VitalAsset
             Image IconMilitary = Properties.Resources.vitMilitary;
             Image IconPsychological = Properties.Resources.vitPsychological;
 
+        }
+        public string getId()
+        {
+            return Id;
+        }
+        public void setId()
+        {
+            Id = "V" + counter + "";
+            counter++;
         }
 
         private void tbPriority_Scroll(object sender, EventArgs e)
