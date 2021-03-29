@@ -86,30 +86,40 @@ namespace AADS.Views.VitalAsset
         {
             createMarker removeMarker = new createMarker(0, 0);
             mainForm1.mainMap.Overlays.Remove(removeMarker.getOverlay());
-
-            if (comboBox1.SelectedItem == "Economic")
+            try
             {
-                vitIcon = new Bitmap(Properties.Resources.vitEconomic);
+                if (comboBox1.SelectedIndex != 0)
+                {
+                    if (comboBox1.SelectedItem == "Economic")
+                    {
+                        vitIcon = new Bitmap(Properties.Resources.vitEconomic);
+                    }
+                    else if (comboBox1.SelectedItem == "Military")
+                    {
+                        vitIcon = new Bitmap(Properties.Resources.vitMilitary);
+                    }
+                    else if (comboBox1.SelectedItem == "Psychological")
+                    {
+                        vitIcon = new Bitmap(Properties.Resources.vitPsychological);
+                    }
+                    else if (comboBox1.SelectedItem == "Political")
+                    {
+                        vitIcon = new Bitmap(Properties.Resources.vitalAssetPolitical);
+                    }
+                }
             }
-            else if(comboBox1.SelectedItem == "Military")
+            catch
             {
-                vitIcon = new Bitmap(Properties.Resources.vitMilitary);
+                comboBox1.SelectedIndex = 0;
             }
-            else if (comboBox1.SelectedItem == "Psychological")
-            {
-                vitIcon = new Bitmap(Properties.Resources.vitPsychological);
-            }
-            else if (comboBox1.SelectedItem == "Political")
-            {
-                vitIcon = new Bitmap(Properties.Resources.vitalAssetPolitical);
-            }
+            
 
             double lat = Convert.ToDouble(txtPointLat.Text);
             double lng = Convert.ToDouble(txtPointLng.Text);
             marker = new GMarkerGoogle(new PointLatLng(lat, lng), vitIcon);
-            vitOverlay = new GMapOverlay(comboBox1.SelectedItem.ToString());
-            vitOverlay.Markers.Add(marker);
-            mainForm1.mainMap.Overlays.Add(vitOverlay);
+            GMapOverlay overlay = mainForm1.GetOverlay("markersP");
+            overlay.Markers.Add(marker);
+            mainForm1.mainMap.Overlays.Add(overlay);
 
             mainForm1.updateMap();    
                 
@@ -149,7 +159,7 @@ namespace AADS.Views.VitalAsset
                 }
                 
             }
-            
+           
         }
 
         private void btnConfirm_Click(object sender, EventArgs e)

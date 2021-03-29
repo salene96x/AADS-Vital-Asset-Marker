@@ -90,6 +90,7 @@ namespace AADS
         {
             InitializeComponent();
             Instance = this;
+            mainMap.OnMarkerClick += new MarkerClick(mainMap_OnMarkerClick_1);
             mainMap.Manager.BoostCacheEngine = true;
             mainMap.MapScaleInfoEnabled = true;
             mainMap.MapScaleInfoPosition = MapScaleInfoPosition.Bottom;
@@ -721,6 +722,7 @@ namespace AADS
             currentItemId = item.Overlay.Id;
             if (e.Button == MouseButtons.Right)
             {
+                currentItem.IsHitTestVisible = true;
                 menuMarker.Show(Cursor.Position);
             }
         }
@@ -738,17 +740,8 @@ namespace AADS
                 MessageBox.Show("แก้ไขข้อมูล");
             }
             else if (itemName.Equals("ลบ"))
-            { 
-                if (currentItemId.Equals("vitMarkers"))
-                {
-                    mainMap.Overlays.Remove(removeOvl);
-                    updateMap();
-                    mainMap.Refresh();
-                }
-            }
-            else
             {
-                MessageBox.Show("เพิ่ม");
+                markersP.Markers.Remove(currentItem);
             }
         }
         public void getVitOverlay(GMapOverlay ovl)
