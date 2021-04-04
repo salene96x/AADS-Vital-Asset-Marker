@@ -30,7 +30,6 @@ namespace AADS.Views.VitalAsset
             mainForm1 = mainForm.GetInstance();
             instance = this;
             InitializeComponent();
-            Id = "V" + counter + "";
         }
 
         public void setString(string lat, string lng)
@@ -89,8 +88,12 @@ namespace AADS.Views.VitalAsset
         {
             GMapOverlay overlay = mainForm1.GetOverlay("markersP");
             overlay.Markers.Remove(marker);
-            var removeMarker = createMarker.marker;
-            overlay.Markers.Remove(removeMarker);
+            if (rdbAuto.Checked)
+            {
+                var removeMarker = createMarker.marker;
+                overlay.Markers.Remove(removeMarker);
+            }
+            
             try
             {
                 if (comboBox1.SelectedIndex != 0)
