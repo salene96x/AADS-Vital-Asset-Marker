@@ -87,13 +87,7 @@ namespace AADS.Views.VitalAsset
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            createMarker removeMarker = new createMarker(0, 0);
-            if (rdbAuto.Checked)
-            {
-                marker = removeMarker.getMarker();
-            }
             GMapOverlay overlay = mainForm1.GetOverlay("markersP");
-            overlay.Markers.Remove(marker);
             try
             {
                 if (comboBox1.SelectedIndex != 0)
@@ -101,18 +95,22 @@ namespace AADS.Views.VitalAsset
                     if (comboBox1.SelectedItem == "Economic")
                     {
                         vitIcon = new Bitmap(Properties.Resources.vitEconomic);
+                        overlay.Markers.Remove(marker);
                     }
                     else if (comboBox1.SelectedItem == "Military")
                     {
                         vitIcon = new Bitmap(Properties.Resources.vitMilitary);
+                        overlay.Markers.Remove(marker);
                     }
                     else if (comboBox1.SelectedItem == "Psychological")
                     {
                         vitIcon = new Bitmap(Properties.Resources.vitPsychological);
+                        overlay.Markers.Remove(marker);
                     }
                     else if (comboBox1.SelectedItem == "Political")
                     {
                         vitIcon = new Bitmap(Properties.Resources.vitalAssetPolitical);
+                        overlay.Markers.Remove(marker);
                     }
                 }
             }
