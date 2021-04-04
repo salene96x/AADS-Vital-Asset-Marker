@@ -39,7 +39,7 @@ namespace AADS
         internal readonly GMapOverlay midlineDistance = new GMapOverlay("midlineDistance");
         internal readonly GMapOverlay minMapOverlay = new GMapOverlay("minMapOverlay");
         internal readonly GMapOverlay routeAndCorridor = new GMapOverlay("routeAndCorridor");
-        internal readonly Dictionary<string, List<string>> vitMarkerDict = new Dictionary<string, List<string>>();
+        internal readonly Dictionary<int, GMarkerGoogle> markersDict = new Dictionary<int, GMarkerGoogle>();
 
         List<MapMode> mapModes = new List<MapMode>();
         GMapMarker currentMarker;
@@ -690,13 +690,16 @@ namespace AADS
         private void mainMap_Click(object sender, EventArgs e)
         {
         }
+        public static int counter = 0;
         private void mainMap_MouseClick_1(object sender, MouseEventArgs e)
         {
             if (vitCheck) 
             {
-                var createMarker1 = new Views.VitalAsset.createMarker(e.X, e.Y);
-                createMarker1.singleMark();
-                updateMap();
+                var createMarker1 = new Views.VitalAsset.createMarker();
+                createMarker1.singleMark(e.X, e.Y);
+                var marker = createMarker1.getMarker();
+                markersDict.Add(counter, marker);
+                counter++;
             }
         }
         private static bool vitCheck = false;

@@ -2,6 +2,7 @@
 using GMap.NET.WindowsForms;
 using GMap.NET.WindowsForms.Markers;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -22,6 +23,7 @@ namespace AADS.Views.VitalAsset
         private TextBox txt2;
         private static int counter = 101;
         private static string Id;
+        private Dictionary<int, GMarkerGoogle> markers = new Dictionary<int, GMarkerGoogle>();
 
         public main()
         {
@@ -44,7 +46,6 @@ namespace AADS.Views.VitalAsset
 
         private void main_Load(object sender, EventArgs e)
         {
-            loadIcons();
         }
 
         public main getInstance()
@@ -82,25 +83,21 @@ namespace AADS.Views.VitalAsset
         private void btnMark_Click(object sender, EventArgs e)
         {
             manualMark();
-            mainForm1.updateMap();
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            createMarker removeMarker = new createMarker(0, 0);
-            if (rdbAuto.Checked)
-            {
-                marker = removeMarker.getMarker();
-            }
             GMapOverlay overlay = mainForm1.GetOverlay("markersP");
             overlay.Markers.Remove(marker);
+            var removeMarker = createMarker.marker;
+            overlay.Markers.Remove(removeMarker);
             try
             {
                 if (comboBox1.SelectedIndex != 0)
                 {
                     if (comboBox1.SelectedItem == "Economic")
                     {
-                        vitIcon = new Bitmap(Properties.Resources.vitEconomic);
+                        vitIcon = new Bitmap(Properties.Resources.vitEconomic); 
                     }
                     else if (comboBox1.SelectedItem == "Military")
                     {
@@ -126,18 +123,10 @@ namespace AADS.Views.VitalAsset
             double lng = Convert.ToDouble(txtPointLng.Text);
             marker = new GMarkerGoogle(new PointLatLng(lat, lng), vitIcon);
             overlay.Markers.Add(marker);
-            mainForm1.updateMap();
+            markers.Add(counter, marker);
             counter++;
                 
             
-        }
-        void loadIcons()
-        {
-            Image IconPolitical = AADS.Properties.Resources.vitalAssetPolitical;
-            Image IconEconomic = Properties.Resources.vitEconomic;
-            Image IconMilitary = Properties.Resources.vitMilitary;
-            Image IconPsychological = Properties.Resources.vitPsychological;
-
         }
         public string getId()
         {
