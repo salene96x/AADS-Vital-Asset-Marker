@@ -98,18 +98,23 @@ namespace AADS.Views.VitalAsset
                     if (comboBox1.SelectedItem == "Economic")
                     {
                         vitIcon = new Bitmap(Properties.Resources.vitEconomic); 
+                        vitIcon = new Bitmap(Properties.Resources.vitEconomic);
+                        overlay.Markers.Remove(marker);
                     }
                     else if (comboBox1.SelectedItem == "Military")
                     {
                         vitIcon = new Bitmap(Properties.Resources.vitMilitary);
+                        overlay.Markers.Remove(marker);
                     }
                     else if (comboBox1.SelectedItem == "Psychological")
                     {
                         vitIcon = new Bitmap(Properties.Resources.vitPsychological);
+                        overlay.Markers.Remove(marker);
                     }
                     else if (comboBox1.SelectedItem == "Political")
                     {
                         vitIcon = new Bitmap(Properties.Resources.vitalAssetPolitical);
+                        overlay.Markers.Remove(marker);
                     }
                 }
             }

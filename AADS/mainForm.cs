@@ -718,13 +718,10 @@ namespace AADS
             mainMap.Zoom -= 0.1;
         }
         private static GMapMarker currentItem;
-        private static string currentItemId;
-        private static GMapOverlay removeOvl;
 
         private void mainMap_OnMarkerClick_1(GMapMarker item, MouseEventArgs e)
         {
             currentItem = item;
-            currentItemId = item.Overlay.Id;
             if (e.Button == MouseButtons.Right)
             {
                 menuMarker.Show(Cursor.Position);
