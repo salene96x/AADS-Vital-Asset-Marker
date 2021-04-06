@@ -26,22 +26,16 @@ namespace AADS.Views.VitalAsset
             point = main.mainMap.FromLocalToLatLng(x, y);
             GMapOverlay overlay = mainForm1.GetOverlay("markersP");
             marker = new GMarkerGoogle(point, GMarkerGoogleType.red);
+            marker.ToolTipText = $"\nMarker type : Vital Asset\nLatitude : {point.Lat.ToString()} \nLongitude : {point.Lng.ToString()}";
             overlay.Markers.Add(marker);
             setValueVital();
             main.setVitClickedValue(false);
             main.setCurrentMarkerStatus(false);
-            updateMap();
         }
         public GMarkerGoogle getMarker()
         {
             return marker;
         }
-        void updateMap()
-        {
-            main.mainMap.Zoom += 0.01;
-            main.mainMap.Zoom -= 0.01;
-        }
-
         void setValueVital()
         {
             vitalMain = VitalAsset.main.getInstace();

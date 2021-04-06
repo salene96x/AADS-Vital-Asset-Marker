@@ -714,10 +714,11 @@ namespace AADS
             this.mainMap.Size = new System.Drawing.Size(1024, 515);
             this.mainMap.TabIndex = 4;
             this.mainMap.Zoom = 0D;
-            this.mainMap.OnMarkerClick += new GMap.NET.WindowsForms.MarkerClick(this.mainMap_OnMarkerClick_1);
             this.mainMap.OnMapZoomChanged += new GMap.NET.MapZoomChanged(this.mainMap_OnMapZoomChanged);
             this.mainMap.Click += new System.EventHandler(this.mainMap_Click);
             this.mainMap.MouseClick += new System.Windows.Forms.MouseEventHandler(this.mainMap_MouseClick_1);
+            this.mainMap.MouseDown += new System.Windows.Forms.MouseEventHandler(this.mainMap_MouseDown_1);
+            this.mainMap.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mainMap_MouseMove_1);
             // 
             // minMap1
             // 
@@ -1558,7 +1559,7 @@ namespace AADS
             this.menuDel,
             this.menuEdit});
             this.menuMarker.Name = "contextMenuStrip1";
-            this.menuMarker.Size = new System.Drawing.Size(181, 78);
+            this.menuMarker.Size = new System.Drawing.Size(103, 56);
             this.menuMarker.Text = "จัดการมาร์คเกอร์";
             this.menuMarker.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuMarker_ItemClicked);
             this.menuMarker.Click += new System.EventHandler(this.menuMarker_Click);
@@ -1566,13 +1567,13 @@ namespace AADS
             // menuDel
             // 
             this.menuDel.Name = "menuDel";
-            this.menuDel.Size = new System.Drawing.Size(180, 26);
+            this.menuDel.Size = new System.Drawing.Size(102, 26);
             this.menuDel.Text = "ลบ";
             // 
             // menuEdit
             // 
             this.menuEdit.Name = "menuEdit";
-            this.menuEdit.Size = new System.Drawing.Size(180, 26);
+            this.menuEdit.Size = new System.Drawing.Size(102, 26);
             this.menuEdit.Text = "แก้ไข";
             // 
             // mainForm

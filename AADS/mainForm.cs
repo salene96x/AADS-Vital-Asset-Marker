@@ -697,9 +697,6 @@ namespace AADS
             {
                 var createMarker1 = new Views.VitalAsset.createMarker();
                 createMarker1.singleMark(e.X, e.Y);
-                var marker = createMarker1.getMarker();
-                markersDict.Add(counter, marker);
-                counter++;
             }
         }
         private static bool vitCheck = false;
@@ -717,7 +714,7 @@ namespace AADS
             mainMap.Zoom += 0.1;
             mainMap.Zoom -= 0.1;
         }
-        private static GMapMarker currentItem;
+        private GMapMarker currentItem;
 
         private void mainMap_OnMarkerClick_1(GMapMarker item, MouseEventArgs e)
         {
@@ -735,18 +732,46 @@ namespace AADS
         private void menuMarker_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
             ToolStripItem clickedItem = e.ClickedItem;
+            var vitalMain = Views.VitalAsset.main.getInstace();
             string itemName = clickedItem.Text;
             if (itemName.Equals("แก้ไข"))
             {
-                MessageBox.Show("แก้ไขข้อมูล");
+                vitalMain.editData(currentItem);
+
             }
             else if (itemName.Equals("ลบ"))
             {
                 markersP.Markers.Remove(currentItem);
-                var mainVitalAsset = Views.VitalAsset.main.getInstace();
-                mainVitalAsset.setRdbAutoChecked(false);
-                mainVitalAsset.txtPointLat.Text = "";
-                mainVitalAsset.txtPointLng.Text = "";
+                vitalMain.setRdbAutoChecked(false);
+                vitalMain.reset();
+            }
+        }
+
+        private void mainMap_MouseMove_1(object sender, MouseEventArgs e)
+        {
+            
+            if (e.Button == MouseButtons.Left)
+            {
+                if (currentMarker.IsVisible)
+                {
+                    currentMarker.Position = mainMap.FromLocalToLatLng(e.X, e.Y);
+                } 
+            }  
+        }
+
+        private void mainMap_MouseDown_1(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                isMouseDown = true;
+                if (currentMarker != null)
+                {
+                    if (currentMarker.IsVisible)
+                    {
+                        currentMarker.Position = mainMap.FromLocalToLatLng(e.X, e.Y);
+                    }
+                }
+                
             }
         }
     }

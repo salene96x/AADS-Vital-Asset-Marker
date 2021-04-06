@@ -57,6 +57,7 @@ namespace AADS.Views.VitalAsset
             this.label10 = new System.Windows.Forms.Label();
             this.btnMark = new System.Windows.Forms.Button();
             this.btnConfirm = new System.Windows.Forms.Button();
+            this.btnConfirmEdit = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbPriority)).BeginInit();
             this.SuspendLayout();
@@ -277,6 +278,7 @@ namespace AADS.Views.VitalAsset
             // 
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
+            "หน่วยยิงที่รับผิดชอบ",
             "Unit001"});
             this.comboBox2.Location = new System.Drawing.Point(140, 336);
             this.comboBox2.Name = "comboBox2";
@@ -346,10 +348,23 @@ namespace AADS.Views.VitalAsset
             this.btnConfirm.UseVisualStyleBackColor = true;
             this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
             // 
+            // btnConfirmEdit
+            // 
+            this.btnConfirmEdit.Font = new System.Drawing.Font("TH SarabunPSK", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirmEdit.Location = new System.Drawing.Point(6, 508);
+            this.btnConfirmEdit.Name = "btnConfirmEdit";
+            this.btnConfirmEdit.Size = new System.Drawing.Size(265, 52);
+            this.btnConfirmEdit.TabIndex = 89;
+            this.btnConfirmEdit.Text = "Editting Confirm";
+            this.btnConfirmEdit.UseVisualStyleBackColor = true;
+            this.btnConfirmEdit.Visible = false;
+            this.btnConfirmEdit.Click += new System.EventHandler(this.btnConfirmEdit_Click);
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnConfirmEdit);
             this.Controls.Add(this.btnConfirm);
             this.Controls.Add(this.btnMark);
             this.Controls.Add(this.comboBox3);
@@ -419,5 +434,6 @@ namespace AADS.Views.VitalAsset
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Button btnMark;
         private System.Windows.Forms.Button btnConfirm;
+        private System.Windows.Forms.Button btnConfirmEdit;
     }
 }
