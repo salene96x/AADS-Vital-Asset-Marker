@@ -57,6 +57,7 @@ namespace AADS.Views.VitalAsset
             else if (rdbAuto.Checked)
             {
                 mainForm1.setVitClickedValue(true);
+                btnMark.Visible = false;
             }
         }
         void manualMark() 
@@ -137,15 +138,22 @@ namespace AADS.Views.VitalAsset
                         overlay.Markers.Remove(marker);
                     }
                 }
+                double lat = Convert.ToDouble(txtPointLat.Text);
+                double lng = Convert.ToDouble(txtPointLng.Text);
+                if (vitIcon == null)
+                {
+                    this.marker = new GMarkerGoogle(new PointLatLng(lat, lng), GMarkerGoogleType.red_dot);
+                }
+                else
+                {
+                    this.marker = new GMarkerGoogle(new PointLatLng(lat, lng), vitIcon);
+                }
+                overlay.Markers.Add(marker);
             }
             catch
             {
                 comboBox1.SelectedIndex = 0;
-            }
-            double lat = Convert.ToDouble(txtPointLat.Text);
-            double lng = Convert.ToDouble(txtPointLng.Text);
-            this.marker = new GMarkerGoogle(new PointLatLng(lat, lng), vitIcon);
-            overlay.Markers.Add(marker);      
+            } 
         }
 
         private void tbPriority_Scroll(object sender, EventArgs e)
@@ -189,6 +197,7 @@ namespace AADS.Views.VitalAsset
                     reset();
                     markers.Add(marker, addList);
                     this.marker.ToolTipText = $"\nMarker type : Vital Asset \nName : {this.markers[marker][0]} \nLatitude : {this.markers[marker][1]} \nLongitude : {this.markers[marker][2]}";
+                    mainForm1.setOnlickMenuMarker(true);
                 }     
             }
             else
@@ -230,7 +239,8 @@ namespace AADS.Views.VitalAsset
 
         private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBox2.SelectedIndex == 1)
+            //just a dummy data
+            if (comboBox2.SelectedIndex == 0)
             {
                 txtUnitStatus.Text = "Active";
             }

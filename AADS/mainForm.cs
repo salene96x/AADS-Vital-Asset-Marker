@@ -507,6 +507,7 @@ namespace AADS
         private Point label27Location;
         private void mainForm_Load(object sender, EventArgs e)
         {
+            setOnlickMenuMarker(false);
             timeNow.Start();
             updateMinMap();
             updateCmbMapMode();
@@ -719,12 +720,31 @@ namespace AADS
         private void mainMap_OnMarkerClick_1(GMapMarker item, MouseEventArgs e)
         {
             currentItem = item;
-            if (e.Button == MouseButtons.Right)
+            if (isMenuMarkerClicked)
             {
-                menuMarker.Show(Cursor.Position);
+                if (e.Button == MouseButtons.Right)
+                {
+                    menuMarker.Show(Cursor.Position);
+                }
             }
+            //foreach (var j in panelRight.Controls.OfType<UserControl>())
+            //{
+            //    var vitalMain = Views.VitalAsset.main.getInstace();
+            //    if (j == vitalMain)
+            //    {
+            //        if (e.Button == MouseButtons.Right)
+            //        {
+            //            menuMarker.Show(Cursor.Position);
+            //        }
+            //    }
+            //}
+            
         }
-
+        private static bool isMenuMarkerClicked;
+        public void setOnlickMenuMarker(bool check)
+        {
+            isMenuMarkerClicked = check;
+        }
         private void menuMarker_Click(object sender, EventArgs e)
         {
         }

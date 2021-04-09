@@ -80,7 +80,7 @@ namespace AADS.Views.VitalAsset
             this.label1.Font = new System.Drawing.Font("TH SarabunPSK", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(100, 4);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(90, 33);
+            this.label1.Size = new System.Drawing.Size(87, 27);
             this.label1.TabIndex = 0;
             this.label1.Text = "Vital Asset";
             // 
@@ -90,7 +90,7 @@ namespace AADS.Views.VitalAsset
             this.label2.Font = new System.Drawing.Font("TH SarabunPSK", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(22, 124);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(115, 28);
+            this.label2.Size = new System.Drawing.Size(113, 24);
             this.label2.TabIndex = 63;
             this.label2.Text = "Point lattitude : ";
             // 
@@ -100,7 +100,7 @@ namespace AADS.Views.VitalAsset
             this.label3.Font = new System.Drawing.Font("TH SarabunPSK", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(11, 158);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(126, 28);
+            this.label3.Size = new System.Drawing.Size(124, 24);
             this.label3.TabIndex = 64;
             this.label3.Text = "Point longtitude : ";
             // 
@@ -109,7 +109,7 @@ namespace AADS.Views.VitalAsset
             this.txtPointLat.Enabled = false;
             this.txtPointLat.Location = new System.Drawing.Point(140, 124);
             this.txtPointLat.Name = "txtPointLat";
-            this.txtPointLat.Size = new System.Drawing.Size(131, 28);
+            this.txtPointLat.Size = new System.Drawing.Size(131, 26);
             this.txtPointLat.TabIndex = 65;
             this.txtPointLat.TextChanged += new System.EventHandler(this.txtPointLat_TextChanged);
             // 
@@ -118,7 +118,7 @@ namespace AADS.Views.VitalAsset
             this.txtPointLng.Enabled = false;
             this.txtPointLng.Location = new System.Drawing.Point(140, 158);
             this.txtPointLng.Name = "txtPointLng";
-            this.txtPointLng.Size = new System.Drawing.Size(131, 28);
+            this.txtPointLng.Size = new System.Drawing.Size(131, 26);
             this.txtPointLng.TabIndex = 66;
             // 
             // lblType
@@ -127,7 +127,7 @@ namespace AADS.Views.VitalAsset
             this.lblType.Font = new System.Drawing.Font("TH SarabunPSK", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblType.Location = new System.Drawing.Point(44, 194);
             this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(93, 28);
+            this.lblType.Size = new System.Drawing.Size(91, 24);
             this.lblType.TabIndex = 67;
             this.lblType.Text = "Asset Type : ";
             // 
@@ -137,14 +137,13 @@ namespace AADS.Views.VitalAsset
             this.comboBox1.Font = new System.Drawing.Font("TH SarabunPSK", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "Asset Type",
             "Political",
             "Military",
             "Psychological",
             "Economic"});
             this.comboBox1.Location = new System.Drawing.Point(140, 192);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(131, 36);
+            this.comboBox1.Size = new System.Drawing.Size(131, 32);
             this.comboBox1.TabIndex = 68;
             this.comboBox1.Text = "Asset Type";
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
@@ -155,7 +154,7 @@ namespace AADS.Views.VitalAsset
             this.label4.Font = new System.Drawing.Font("TH SarabunPSK", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(65, 234);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(69, 28);
+            this.label4.Size = new System.Drawing.Size(67, 24);
             this.label4.TabIndex = 69;
             this.label4.Text = "Priority : ";
             // 
@@ -165,7 +164,7 @@ namespace AADS.Views.VitalAsset
             this.label5.Font = new System.Drawing.Font("TH SarabunPSK", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(76, 42);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(61, 28);
+            this.label5.Size = new System.Drawing.Size(59, 24);
             this.label5.TabIndex = 70;
             this.label5.Text = "Mode : ";
             // 
@@ -174,7 +173,7 @@ namespace AADS.Views.VitalAsset
             this.rdbManual.AutoSize = true;
             this.rdbManual.Location = new System.Drawing.Point(140, 40);
             this.rdbManual.Name = "rdbManual";
-            this.rdbManual.Size = new System.Drawing.Size(67, 26);
+            this.rdbManual.Size = new System.Drawing.Size(65, 22);
             this.rdbManual.TabIndex = 71;
             this.rdbManual.TabStop = true;
             this.rdbManual.Text = "Manual ";
@@ -186,7 +185,7 @@ namespace AADS.Views.VitalAsset
             this.rdbAuto.AutoSize = true;
             this.rdbAuto.Location = new System.Drawing.Point(140, 61);
             this.rdbAuto.Name = "rdbAuto";
-            this.rdbAuto.Size = new System.Drawing.Size(50, 26);
+            this.rdbAuto.Size = new System.Drawing.Size(48, 22);
             this.rdbAuto.TabIndex = 72;
             this.rdbAuto.TabStop = true;
             this.rdbAuto.Text = "Auto";
@@ -208,7 +207,7 @@ namespace AADS.Views.VitalAsset
             // 
             this.txtPriority.Location = new System.Drawing.Point(140, 234);
             this.txtPriority.Name = "txtPriority";
-            this.txtPriority.Size = new System.Drawing.Size(27, 28);
+            this.txtPriority.Size = new System.Drawing.Size(27, 26);
             this.txtPriority.TabIndex = 74;
             this.txtPriority.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtPriority.TextChanged += new System.EventHandler(this.txtPriority_TextChanged);
@@ -217,7 +216,7 @@ namespace AADS.Views.VitalAsset
             // 
             this.txtName.Location = new System.Drawing.Point(140, 90);
             this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(131, 28);
+            this.txtName.Size = new System.Drawing.Size(131, 26);
             this.txtName.TabIndex = 76;
             // 
             // lblName
@@ -226,7 +225,7 @@ namespace AADS.Views.VitalAsset
             this.lblName.Font = new System.Drawing.Font("TH SarabunPSK", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblName.Location = new System.Drawing.Point(37, 90);
             this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(100, 28);
+            this.lblName.Size = new System.Drawing.Size(98, 24);
             this.lblName.TabIndex = 75;
             this.lblName.Text = "Asset Name : ";
             // 
@@ -234,7 +233,7 @@ namespace AADS.Views.VitalAsset
             // 
             this.txtProvince.Location = new System.Drawing.Point(140, 268);
             this.txtProvince.Name = "txtProvince";
-            this.txtProvince.Size = new System.Drawing.Size(131, 28);
+            this.txtProvince.Size = new System.Drawing.Size(131, 26);
             this.txtProvince.TabIndex = 78;
             // 
             // label6
@@ -243,7 +242,7 @@ namespace AADS.Views.VitalAsset
             this.label6.Font = new System.Drawing.Font("TH SarabunPSK", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(55, 268);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(79, 28);
+            this.label6.Size = new System.Drawing.Size(77, 24);
             this.label6.TabIndex = 77;
             this.label6.Text = "Province : ";
             // 
@@ -251,7 +250,7 @@ namespace AADS.Views.VitalAsset
             // 
             this.txtSize.Location = new System.Drawing.Point(140, 302);
             this.txtSize.Name = "txtSize";
-            this.txtSize.Size = new System.Drawing.Size(131, 28);
+            this.txtSize.Size = new System.Drawing.Size(131, 26);
             this.txtSize.TabIndex = 80;
             // 
             // label7
@@ -260,7 +259,7 @@ namespace AADS.Views.VitalAsset
             this.label7.Font = new System.Drawing.Font("TH SarabunPSK", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.Location = new System.Drawing.Point(84, 302);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(50, 28);
+            this.label7.Size = new System.Drawing.Size(48, 24);
             this.label7.TabIndex = 79;
             this.label7.Text = "Size : ";
             // 
@@ -270,7 +269,7 @@ namespace AADS.Views.VitalAsset
             this.label8.Font = new System.Drawing.Font("TH SarabunPSK", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(18, 338);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(116, 28);
+            this.label8.Size = new System.Drawing.Size(114, 24);
             this.label8.TabIndex = 81;
             this.label8.Text = "Response Unit : ";
             // 
@@ -278,11 +277,10 @@ namespace AADS.Views.VitalAsset
             // 
             this.comboBox2.FormattingEnabled = true;
             this.comboBox2.Items.AddRange(new object[] {
-            "หน่วยยิงที่รับผิดชอบ",
-            "Unit001"});
+            "กองทหารราบที่ 1"});
             this.comboBox2.Location = new System.Drawing.Point(140, 336);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(131, 30);
+            this.comboBox2.Size = new System.Drawing.Size(131, 26);
             this.comboBox2.TabIndex = 82;
             this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
@@ -291,7 +289,7 @@ namespace AADS.Views.VitalAsset
             this.txtUnitStatus.Enabled = false;
             this.txtUnitStatus.Location = new System.Drawing.Point(140, 372);
             this.txtUnitStatus.Name = "txtUnitStatus";
-            this.txtUnitStatus.Size = new System.Drawing.Size(131, 28);
+            this.txtUnitStatus.Size = new System.Drawing.Size(131, 26);
             this.txtUnitStatus.TabIndex = 84;
             // 
             // label9
@@ -300,7 +298,7 @@ namespace AADS.Views.VitalAsset
             this.label9.Font = new System.Drawing.Font("TH SarabunPSK", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(40, 372);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(94, 28);
+            this.label9.Size = new System.Drawing.Size(92, 24);
             this.label9.TabIndex = 83;
             this.label9.Text = "Unit Status : ";
             // 
@@ -308,11 +306,10 @@ namespace AADS.Views.VitalAsset
             // 
             this.comboBox3.FormattingEnabled = true;
             this.comboBox3.Items.AddRange(new object[] {
-            "ผู้บังคับบัญชาที่รับผิดชอบ",
             "พล.อ.ประยุทธ์ จันทร์โอชา"});
             this.comboBox3.Location = new System.Drawing.Point(140, 406);
             this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(131, 30);
+            this.comboBox3.Size = new System.Drawing.Size(131, 26);
             this.comboBox3.TabIndex = 86;
             // 
             // label10
@@ -321,7 +318,7 @@ namespace AADS.Views.VitalAsset
             this.label10.Font = new System.Drawing.Font("TH SarabunPSK", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.Location = new System.Drawing.Point(1, 408);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(133, 28);
+            this.label10.Size = new System.Drawing.Size(131, 24);
             this.label10.TabIndex = 85;
             this.label10.Text = "Response Person : ";
             // 
@@ -362,7 +359,7 @@ namespace AADS.Views.VitalAsset
             // 
             // main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnConfirmEdit);
             this.Controls.Add(this.btnConfirm);
