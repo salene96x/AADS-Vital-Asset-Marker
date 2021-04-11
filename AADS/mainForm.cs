@@ -757,7 +757,7 @@ namespace AADS
             if (itemName.Equals("แก้ไข"))
             {
                 vitalMain.editData(currentItem);
-
+                setOnlickMenuMarker(false);
             }
             else if (itemName.Equals("ลบ"))
             {
