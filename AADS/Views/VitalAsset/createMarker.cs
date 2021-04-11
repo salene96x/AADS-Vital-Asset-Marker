@@ -31,6 +31,7 @@ namespace AADS.Views.VitalAsset
             setValueVital();
             main.setVitClickedValue(false);
             main.setCurrentMarkerStatus(false);
+            vitalMain.plusMarkerCount();
         }
         public GMarkerGoogle getMarker()
         {

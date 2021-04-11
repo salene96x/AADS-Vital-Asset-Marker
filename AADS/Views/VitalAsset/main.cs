@@ -22,6 +22,7 @@ namespace AADS.Views.VitalAsset
         private TextBox txt2;
         private Dictionary<GMapMarker, List<string>> markers = new Dictionary<GMapMarker, List<string>>();
         private List<string> addList;
+        private static int markerCount = 0;
 
         public main()
         {
@@ -69,11 +70,20 @@ namespace AADS.Views.VitalAsset
                 overlay.Markers.Add(marker);
                 //mainForm1.mainMap.Overlays.Add(vitOverlay);
                 mainForm1.setCurrentMarkerStatus(false);
+                markerCount++;
         }
 
         private void btnMark_Click(object sender, EventArgs e)
         {
-            manualMark();
+            if (!(txtPointLat.Text.Equals("") && txtPointLng.Text.Equals("")))
+            {
+                manualMark();
+            }
+            else
+            {
+                MessageBox.Show("กรุณาใส่เลขพิกัดก่อนทำการกดปุ่มสร้างมาร์คเกอร์", "ตำบลสำคัญ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            
         }
 
         public void addData()
@@ -101,6 +111,10 @@ namespace AADS.Views.VitalAsset
             this.addList.Add(unitResponsible);
             this.addList.Add(responsePerson);
 
+        }
+        public void plusMarkerCount()
+        {
+            markerCount++;
         }
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -192,6 +206,7 @@ namespace AADS.Views.VitalAsset
                 DialogResult dialogResult = MessageBox.Show("ยืนยันที่จะเพิ่มตำบลสำคัญใช่หรือไม่", "ตำบลสำคัญ", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult is DialogResult.Yes)
                 {
+                    markerCount = 0;
                     addData();
                     MessageBox.Show("เพิ่มตำบลสำคัญเสร็จสิ้น", "ตำบลสำคัญ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     reset();
@@ -280,6 +295,10 @@ namespace AADS.Views.VitalAsset
         public void editData(GMapMarker id)
         {
             idMarker = id;
+            label5.Visible = false;
+            rdbAuto.Visible = false;
+            rdbManual.Visible = false;
+            btnMark.Visible = false;
             try
             {
                 txtName.Text = markers[id][0];
