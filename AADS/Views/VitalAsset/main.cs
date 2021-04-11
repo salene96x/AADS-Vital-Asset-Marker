@@ -76,10 +76,6 @@ namespace AADS.Views.VitalAsset
                         {
                             marker = createMarker.marker;
                         }
-                        else
-                        {
-                            marker = marker;
-                        }
                         overlay.Markers.Remove(marker);
                         txtPointLat.Text = "";
                         txtPointLng.Text = "";
@@ -94,7 +90,7 @@ namespace AADS.Views.VitalAsset
                     {
                         MessageBox.Show("กรุณาทำการเลือกพิกัดบนแผนที่เพื่อทำการเพิ่มปักหมุด", "ตำบลสำคัญ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         var overlay = mainForm1.GetOverlay("markersP");
-                        overlay.Markers.Remove(this.marker);
+                        overlay.Markers.Remove(marker);
                         txtPointLat.Text = "";
                         txtPointLng.Text = "";
                         cmbType.SelectedItem = null;
@@ -178,50 +174,48 @@ namespace AADS.Views.VitalAsset
             {
                 var removeMarker = createMarker.marker;
                 overlay.Markers.Remove(removeMarker);
-                marker = removeMarker;
             }
             overlay.Markers.Remove(marker);
             try
             {
                 if (cmbType.SelectedIndex != 0)
                 {
-                    if (cmbType.SelectedItem == "Economic")
+                    if (cmbType.SelectedIndex == 4)
                     {
                         vitIcon = new Bitmap(Properties.Resources.vitEconomic); 
                         vitIcon = new Bitmap(Properties.Resources.vitEconomic);
                         overlay.Markers.Remove(marker);
                     }
-                    else if (cmbType.SelectedItem == "Military")
+                    else if (cmbType.SelectedIndex == 2)
                     {
                         vitIcon = new Bitmap(Properties.Resources.vitMilitary);
                         overlay.Markers.Remove(marker);
                     }
-                    else if (cmbType.SelectedItem == "Psychological")
+                    else if (cmbType.SelectedIndex == 3)
                     {
                         vitIcon = new Bitmap(Properties.Resources.vitPsychological);
                         overlay.Markers.Remove(marker);
                     }
-                    else if (cmbType.SelectedItem == "Political")
+                    else if (cmbType.SelectedIndex == 1)
                     {
-                        vitIcon = new Bitmap(Properties.Resources.vitalAssetPolitical);
+                        vitIcon = new Bitmap(Properties.Resources.vitPolitical);
                         overlay.Markers.Remove(marker);
                     }
                 }
                 double lat = Convert.ToDouble(txtPointLat.Text);
                 double lng = Convert.ToDouble(txtPointLng.Text);
-                if (vitIcon == null)
+                if (vitIcon != null)
                 {
-                    this.marker = new GMarkerGoogle(new PointLatLng(lat, lng), GMarkerGoogleType.red_dot);
+                    marker = new GMarkerGoogle(new PointLatLng(lat, lng), vitIcon);
                 }
                 else
                 {
-                    this.marker = new GMarkerGoogle(new PointLatLng(lat, lng), vitIcon);
+                    marker = new GMarkerGoogle(new PointLatLng(lat, lng), GMarkerGoogleType.red_small);
                 }
                 overlay.Markers.Add(marker);
             }
             catch
             {
-                cmbType.SelectedIndex = 0;
             } 
         }
 
@@ -266,7 +260,9 @@ namespace AADS.Views.VitalAsset
                     MessageBox.Show("เพิ่มตำบลสำคัญเสร็จสิ้น", "ตำบลสำคัญ", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     reset();
                     markers.Add(marker, addList);
-                    this.marker.ToolTipText = $"\nMarker type : Vital Asset \nName : {this.markers[marker][0]} \nLatitude : {this.markers[marker][1]} \nLongitude : {this.markers[marker][2]}";
+                    this.marker.ToolTipText = $"\nประเภทจุด : Vital Asset \nชื่อ : {this.markers[marker][0]} \nLatitude : {this.markers[marker][1]} \nLongitude : {this.markers[marker][2]}" +
+                        $"\nประเภทของตำบล : {this.markers[marker][3]} \nระดับความสำคัญ : {this.markers[marker][4]} \nจังหวัด : {this.markers[marker][5]} \nขนาด : {this.markers[marker][6]} " +
+                        $"\nหน่วยยิงที่รับผิดชอบ : {this.markers[marker][7]} \nผู้บัญชาการ : {this.markers[marker][8]}";
                     mainForm1.setOnlickMenuMarker(true);
                 }     
             }
@@ -397,7 +393,9 @@ namespace AADS.Views.VitalAsset
                     reset();
                     markers.Add(marker, addList);
                     mainForm1.setOnlickMenuMarker(true);
-                    this.marker.ToolTipText = $"\nMarker type : Vital Asset \nName : {this.markers[idMarker][0]} \nLatitude : {this.markers[idMarker][1]} \nLongitude : {this.markers[idMarker][2]}";
+                    this.marker.ToolTipText = $"\nประเภทจุด : Vital Asset \nชื่อ : {this.markers[marker][0]} \nLatitude : {this.markers[marker][1]} \nLongitude : {this.markers[marker][2]}" +
+                        $"\nประเภทของตำบล : {this.markers[marker][3]} \nระดับความสำคัญ : {this.markers[marker][4]} \nจังหวัด : {this.markers[marker][5]} \nขนาด : {this.markers[marker][6]} " +
+                        $"\nหน่วยยิงที่รับผิดชอบ : {this.markers[marker][7]} \nผู้บัญชาการ : {this.markers[marker][8]}";
                 }
             }
             else

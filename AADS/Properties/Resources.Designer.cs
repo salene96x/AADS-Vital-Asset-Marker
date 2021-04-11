@@ -183,16 +183,6 @@ namespace AADS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap vitalAssetPolitical {
-            get {
-                object obj = ResourceManager.GetObject("vitalAssetPolitical", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap vitEconomic {
             get {
                 object obj = ResourceManager.GetObject("vitEconomic", resourceCulture);
@@ -206,6 +196,16 @@ namespace AADS.Properties {
         internal static System.Drawing.Bitmap vitMilitary {
             get {
                 object obj = ResourceManager.GetObject("vitMilitary", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap vitPolitical {
+            get {
+                object obj = ResourceManager.GetObject("vitPolitical", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
