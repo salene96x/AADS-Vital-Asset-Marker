@@ -178,30 +178,29 @@ namespace AADS.Views.VitalAsset
             overlay.Markers.Remove(marker);
             try
             {
-                if (cmbType.SelectedIndex != 0)
-                {
-                    if (cmbType.SelectedIndex == 4)
+
+                    if (cmbType.SelectedIndex == 3)
                     {
                         vitIcon = new Bitmap(Properties.Resources.vitEconomic); 
                         vitIcon = new Bitmap(Properties.Resources.vitEconomic);
                         overlay.Markers.Remove(marker);
                     }
-                    else if (cmbType.SelectedIndex == 2)
+                    else if (cmbType.SelectedIndex == 1)
                     {
                         vitIcon = new Bitmap(Properties.Resources.vitMilitary);
                         overlay.Markers.Remove(marker);
                     }
-                    else if (cmbType.SelectedIndex == 3)
+                    else if (cmbType.SelectedIndex == 2)
                     {
                         vitIcon = new Bitmap(Properties.Resources.vitPsychological);
                         overlay.Markers.Remove(marker);
                     }
-                    else if (cmbType.SelectedIndex == 1)
+                    else if (cmbType.SelectedIndex == 0)
                     {
                         vitIcon = new Bitmap(Properties.Resources.vitPolitical);
                         overlay.Markers.Remove(marker);
                     }
-                }
+                
                 double lat = Convert.ToDouble(txtPointLat.Text);
                 double lng = Convert.ToDouble(txtPointLng.Text);
                 if (vitIcon != null)
@@ -273,6 +272,7 @@ namespace AADS.Views.VitalAsset
         }
         private bool CheckNullTxt()
         {
+            bool check = false;
             foreach (var txt in this.Controls)
             {
                 if (txt.GetType() == typeof(TextBox))
@@ -280,15 +280,26 @@ namespace AADS.Views.VitalAsset
                     txt2 = txt as TextBox;
                     if (txt2.Text == "")
                     {
-                        return false;
+                        check = false;
                     }
                     else
                     {
-                        return true;
+                        check = true;
                     }
                 }   
             }
-            return false;
+            foreach (var j in this.Controls.OfType<ComboBox>())
+            {
+                if (j.SelectedIndex == -1)
+                {
+                    check = false;
+                }
+                else
+                {
+                    check = true;
+                }
+            }
+            return check;
         }
 
         private void txtPointLat_TextChanged(object sender, EventArgs e)
@@ -346,9 +357,8 @@ namespace AADS.Views.VitalAsset
         public void editData(GMapMarker id)
         {
             idMarker = id;
-            label5.Visible = false;
-            rdbAuto.Visible = false;
-            rdbManual.Visible = false;
+            rdbAuto.Enabled = false;
+            rdbManual.Enabled = false;
             btnMark.Visible = false;
             try
             {
@@ -396,6 +406,10 @@ namespace AADS.Views.VitalAsset
                     this.marker.ToolTipText = $"\nประเภทจุด : Vital Asset \nชื่อ : {this.markers[marker][0]} \nLatitude : {this.markers[marker][1]} \nLongitude : {this.markers[marker][2]}" +
                         $"\nประเภทของตำบล : {this.markers[marker][3]} \nระดับความสำคัญ : {this.markers[marker][4]} \nจังหวัด : {this.markers[marker][5]} \nขนาด : {this.markers[marker][6]} " +
                         $"\nหน่วยยิงที่รับผิดชอบ : {this.markers[marker][7]} \nผู้บัญชาการ : {this.markers[marker][8]}";
+                    btnConfirm.Visible = true;
+                    btnConfirmEdit.Visible = false;
+                    rdbAuto.Enabled = true;
+                    rdbManual.Enabled = true;
                 }
             }
             else

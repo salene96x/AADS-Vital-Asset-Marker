@@ -137,7 +137,6 @@ namespace AADS.Views.VitalAsset
             this.cmbType.Font = new System.Drawing.Font("TH SarabunPSK", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbType.FormattingEnabled = true;
             this.cmbType.Items.AddRange(new object[] {
-            "Asset Type",
             "Political",
             "Military",
             "Psychological",
