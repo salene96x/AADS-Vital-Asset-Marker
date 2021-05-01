@@ -1559,7 +1559,7 @@ namespace AADS
             this.menuDel,
             this.menuEdit});
             this.menuMarker.Name = "contextMenuStrip1";
-            this.menuMarker.Size = new System.Drawing.Size(103, 56);
+            this.menuMarker.Size = new System.Drawing.Size(99, 48);
             this.menuMarker.Text = "จัดการมาร์คเกอร์";
             this.menuMarker.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuMarker_ItemClicked);
             this.menuMarker.Click += new System.EventHandler(this.menuMarker_Click);
@@ -1567,13 +1567,13 @@ namespace AADS
             // menuDel
             // 
             this.menuDel.Name = "menuDel";
-            this.menuDel.Size = new System.Drawing.Size(102, 26);
+            this.menuDel.Size = new System.Drawing.Size(98, 22);
             this.menuDel.Text = "ลบ";
             // 
             // menuEdit
             // 
             this.menuEdit.Name = "menuEdit";
-            this.menuEdit.Size = new System.Drawing.Size(102, 26);
+            this.menuEdit.Size = new System.Drawing.Size(98, 22);
             this.menuEdit.Text = "แก้ไข";
             // 
             // mainForm

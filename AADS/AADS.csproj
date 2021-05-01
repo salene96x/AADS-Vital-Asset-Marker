@@ -286,6 +286,7 @@
     <Compile Include="Views\RestrictedArea\main.Designer.cs">
       <DependentUpon>main.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Route\createLines.cs" />
     <Compile Include="Views\Route\main.cs">
       <SubType>Form</SubType>
     </Compile>

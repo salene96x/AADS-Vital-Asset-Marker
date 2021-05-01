@@ -152,6 +152,7 @@ namespace AADS.Views.VitalAsset
             
             this.addList = new List<string>();
 
+            this.addList.Clear();
             this.addList.Add(name);
             this.addList.Add(pointLat);
             this.addList.Add(pointLng);

@@ -31,7 +31,7 @@ namespace AADS.Views.ShowCategory
         {
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnRoute = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button3
@@ -52,14 +52,15 @@ namespace AADS.Views.ShowCategory
             this.button2.Text = "button2";
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnRoute
             // 
-            this.button1.Location = new System.Drawing.Point(4, 322);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(91, 61);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnRoute.Location = new System.Drawing.Point(4, 322);
+            this.btnRoute.Name = "btnRoute";
+            this.btnRoute.Size = new System.Drawing.Size(91, 61);
+            this.btnRoute.TabIndex = 3;
+            this.btnRoute.Text = "Route";
+            this.btnRoute.UseVisualStyleBackColor = true;
+            this.btnRoute.Click += new System.EventHandler(this.btnRoute_Click);
             // 
             // Line
             // 
@@ -67,7 +68,7 @@ namespace AADS.Views.ShowCategory
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnRoute);
             this.Name = "Line";
             this.Size = new System.Drawing.Size(292, 705);
             this.ResumeLayout(false);
@@ -78,6 +79,6 @@ namespace AADS.Views.ShowCategory
 
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnRoute;
     }
 }

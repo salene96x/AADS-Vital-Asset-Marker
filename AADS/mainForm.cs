@@ -40,6 +40,7 @@ namespace AADS
         internal readonly GMapOverlay minMapOverlay = new GMapOverlay("minMapOverlay");
         internal readonly GMapOverlay routeAndCorridor = new GMapOverlay("routeAndCorridor");
         internal readonly Dictionary<int, GMarkerGoogle> markersDict = new Dictionary<int, GMarkerGoogle>();
+        
 
         List<MapMode> mapModes = new List<MapMode>();
         GMapMarker currentMarker;
@@ -515,7 +516,7 @@ namespace AADS
             panelRight.Height = this.Height - panelControl.Height - panelTop.Height - panelBottom.Height;
             panelRight.Location = new Point(1950,93);
             label27Location = new Point(this.Width - label27.Width, label27.Location.Y);
-
+            mainMap.Overlays.Add(routeAndCorridor);
 
 
         }
@@ -604,7 +605,7 @@ namespace AADS
 
         private void btnShow_Line_Click(object sender, EventArgs e)
         {
-            var LinePage = new Views.ShowCategory.Polygon();
+            var LinePage = new Views.ShowCategory.Line();
             panelRightShow.Controls.Clear();
             panelRightShow.Controls.Add(LinePage);
         }
@@ -692,12 +693,34 @@ namespace AADS
         {
         }
         public static int counter = 0;
+        public int prevCounter;
+        private List<PointLatLng> routePoints = new List<PointLatLng>();
+        private List<GMapRoute> routeArr = new List<GMapRoute>();
+        public bool isOnRouteFuncClicked = false;
         private void mainMap_MouseClick_1(object sender, MouseEventArgs e)
         {
             if (vitCheck) 
             {
                 var createMarker1 = new Views.VitalAsset.createMarker();
                 createMarker1.singleMark(e.X, e.Y);
+            }
+            else if (isOnRouteFuncClicked)
+            {
+                if (e.Button == MouseButtons.Left)
+                {
+                    string name = "route" + counter;
+                    var point = mainMap.FromLocalToLatLng(e.X, e.Y);
+                    routePoints.Add(point);
+                    GMapMarker marker = new GMarkerGoogle(point, GMarkerGoogleType.red_small);
+                    markersP.Markers.Add(marker);
+                    GMapRoute route = new GMapRoute(routePoints, name);
+                    routeAndCorridor.Routes.Add(route);
+                }
+            }
+            else
+            {
+                prevCounter = counter;
+                counter++;
             }
         }
         private static bool vitCheck = false;
